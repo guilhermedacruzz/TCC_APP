@@ -87,3 +87,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Blinker
+      fonts:
+        - asset: assets/fonts/blinker/Blinker-Regular.ttf
+        - asset: assets/fonts/blinker/Blinker-Bold.ttf
+          weight : 700
