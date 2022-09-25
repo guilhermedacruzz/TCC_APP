@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  final String text;
+  final Widget widget;
   final Function? onAction;
 
   const CustomButton({
     Key? key,
-    required this.text,
+    required this.widget,
     required this.onAction,
   }) : super(key: key);
 
@@ -18,13 +18,7 @@ class CustomButton extends StatelessWidget {
               onAction!();
             }
           : null,
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-        ),
-      ),
+      child: widget,
     );
   }
 }

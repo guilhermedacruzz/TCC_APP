@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/pages_login.dart';
+import 'pages/page_home.dart';
+import 'pages/page_login.dart';
 import 'utils.dart/style.dart';
 
 void main() {
@@ -14,9 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "SAPA",
       debugShowCheckedModeBanner: false,
-      initialRoute: PageLogin.routeName,
+      initialRoute: PageHome.routeName,
       theme: Styles.themeData(false, context),
       routes: {
+        PageHome.routeName: (context) => const PageHome(),
         PageLogin.routeName: (context) => const PageLogin(),
       },
     );

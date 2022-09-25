@@ -33,9 +33,9 @@ class _PageLoginState extends State<PageLogin> {
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.7,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SizedBox(
                     width: double.infinity,
@@ -122,7 +122,13 @@ class _PageLoginState extends State<PageLogin> {
                         width: double.infinity,
                         height: 45,
                         child: CustomButton(
-                          text: "Entrar",
+                          widget: const Text(
+                            "Entrar",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
                           onAction: () {},
                         ),
                       ),
