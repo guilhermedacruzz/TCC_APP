@@ -25,12 +25,10 @@ class Styles {
           color: isDarkTheme ? Colors.white70 : Colors.black87,
         ),
         headline5: TextStyle(
-          letterSpacing: 2.0,
           fontWeight: FontWeight.w700,
           color: isDarkTheme ? Colors.white70 : Colors.black87,
         ),
         headline6: TextStyle(
-          letterSpacing: 2.0,
           fontWeight: FontWeight.w700,
           color: isDarkTheme ? Colors.white70 : Colors.black87,
         ),
@@ -43,6 +41,7 @@ class Styles {
         button: const TextStyle(
           fontWeight: FontWeight.w700,
           fontSize: 20,
+          color: Colors.white,
         ),
       ),
       fontFamily: "Blinker",
@@ -67,9 +66,18 @@ class Styles {
       canvasColor: isDarkTheme ? Colors.black : Colors.grey[50],
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       buttonTheme: Theme.of(context).buttonTheme.copyWith(
-          colorScheme: isDarkTheme ? const ColorScheme.dark() : const ColorScheme.light()),
+          colorScheme: isDarkTheme
+              ? const ColorScheme.dark()
+              : const ColorScheme.light()),
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
+      ),
+      expansionTileTheme: const ExpansionTileThemeData(
+        collapsedIconColor: Color(0xFFFFD87D),
+        iconColor: Color(0xFFFFD87D),
+        collapsedTextColor: Color(0xFFFFD87D),
+        textColor: Color(0xFFFFD87D),
+        backgroundColor: Colors.red
       ),
     );
   }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:tcc/forms/custom_button.dart';
+import 'package:tcc/widgets/grafics.dart';
+import '../forms/custom_button.dart';
 import '../widgets/custom_drawler.dart';
 
 class PageHome extends StatefulWidget {
   static String routeName = "/home";
+
   const PageHome({super.key});
 
   @override
@@ -12,6 +14,8 @@ class PageHome extends StatefulWidget {
 }
 
 class _PageHomeState extends State<PageHome> {
+  bool toggle = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,19 +24,14 @@ class _PageHomeState extends State<PageHome> {
         title: const Text("SAPA"),
         actions: [
           IconButton(
-            icon: const Icon(
-              Icons.refresh,
-            ),
+            icon: const Icon(Icons.refresh),
             onPressed: () {},
           ),
           IconButton(
-            icon: const Icon(
-              Icons.add,
-            ),
+            icon: const Icon(Icons.add),
             onPressed: () {},
           ),
         ],
-        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -61,22 +60,30 @@ class _PageHomeState extends State<PageHome> {
               child: Theme(
                 data: ThemeData().copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
+                  iconColor: Theme.of(context).expansionTileTheme.iconColor,
+                  textColor: Theme.of(context).expansionTileTheme.textColor,
+                  collapsedIconColor:
+                      Theme.of(context).expansionTileTheme.collapsedIconColor,
+                  collapsedTextColor:
+                      Theme.of(context).expansionTileTheme.collapsedTextColor,
                   title: ListTile(
                     leading: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
+                        color: Theme.of(context).colorScheme.primary,
                         borderRadius: BorderRadius.circular(100),
                       ),
-                      child: const Icon(Icons.tiktok, color: Colors.white),
+                      child: Icon(
+                        Icons.tiktok,
+                        color: Theme.of(context).backgroundColor,
+                      ),
                     ),
-                    title: const Text(
+                    title: Text(
                       "Portão da Frente",
-                      style: TextStyle(color: Colors.black87, fontSize: 16),
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     subtitle: DefaultTextStyle(
-                      style:
-                          const TextStyle(fontSize: 14, color: Colors.black45),
+                      style: Theme.of(context).textTheme.bodyText2 as TextStyle,
                       child: Row(
                         children: const [
                           Text("Fechado"),
@@ -86,65 +93,8 @@ class _PageHomeState extends State<PageHome> {
                       ),
                     ),
                   ),
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(15),
-                      width: double.infinity,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("Nome do Portão: Portão da Frente"),
-                          const Text("Estado atual do portão: Fechado"),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              SizedBox(
-                                height: 30,
-                                width: 80,
-                                child: CustomButton(
-                                  widget: const Text(
-                                    "Abrir",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                  onAction: () {},
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    SfCartesianChart(
-                      primaryXAxis: CategoryAxis(),
-                      // Chart title
-                      title:
-                          ChartTitle(text: 'Estado do Portão ao longo do dia'),
-                      // Enable legend
-                      legend: Legend(isVisible: true),
-                      // Enable tooltip
-                      tooltipBehavior: TooltipBehavior(enable: true),
-                      series: <ChartSeries<_Infections, String>>[
-                        LineSeries<_Infections, String>(
-                          dataSource: <_Infections>[
-                            _Infections('13:00', 0),
-                            _Infections('14:00', 1),
-                            _Infections('14:02', 1),
-                            _Infections('18:56', 0),
-                            _Infections('18:57', 1),
-                            _Infections('22:00', 0)
-                          ],
-                          xValueMapper: (_Infections opened, _) => opened.hours,
-                          yValueMapper: (_Infections opened, _) =>
-                              opened.opened,
-                          // Enable data label
-                          dataLabelSettings:
-                              const DataLabelSettings(isVisible: true),
-                        ),
-                      ],
-                    ),
+                  children: const [
+                    GraficsTeste(),
                   ],
                 ),
               ),
