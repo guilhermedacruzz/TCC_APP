@@ -4,6 +4,7 @@ import 'package:tcc/forms/custom_textformfield.dart';
 
 class PageLogin extends StatefulWidget {
   static String routeName = "/login";
+
   const PageLogin({super.key});
 
   @override
@@ -25,10 +26,10 @@ class _PageLoginState extends State<PageLogin> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
+              children: [
                 Icon(
                   Icons.access_alarm,
-                  size: 40,
+                  size: Theme.of(context).textTheme.displayMedium!.fontSize,
                 ),
               ],
             ),
@@ -41,29 +42,18 @@ class _PageLoginState extends State<PageLogin> {
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           "OLÁ !",
-                          style: TextStyle(
-                            color: Colors.black87,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 55,
-                          ),
+                          style: Theme.of(context).textTheme.headline2,
                         ),
                         Text(
                           "BEM VINDO",
-                          style: TextStyle(
-                            color: Colors.black87,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 55,
-                          ),
+                          style: Theme.of(context).textTheme.headline2,
                         ),
                         Text(
                           "Estavamos esperando por você, entre com as suas informações",
-                          style: TextStyle(
-                            color: Colors.black45,
-                            fontSize: 16,
-                          ),
+                          style: Theme.of(context).textTheme.subtitle1,
                         ),
                       ],
                     ),
@@ -78,9 +68,11 @@ class _PageLoginState extends State<PageLogin> {
                         label: 'Senha',
                         hint: 'Digite a sua senha',
                         suffixIcon: IconButton(
-                          icon: Icon(!hidePassword
-                              ? Icons.remove_red_eye
-                              : Icons.visibility_off),
+                          icon: Icon(
+                            !hidePassword
+                                ? Icons.remove_red_eye
+                                : Icons.visibility_off,
+                          ),
                           onPressed: () {
                             setState(() {
                               hidePassword = !hidePassword;
@@ -93,12 +85,9 @@ class _PageLoginState extends State<PageLogin> {
                         children: [
                           Flexible(
                             child: CheckboxListTile(
-                              title: const Text(
+                              title: Text(
                                 "Lembrar-me",
-                                style: TextStyle(
-                                  color: Colors.black45,
-                                  fontSize: 16,
-                                ),
+                                style: Theme.of(context).textTheme.subtitle2,
                               ),
                               value: checkedValue,
                               onChanged: (newValue) {
@@ -109,12 +98,9 @@ class _PageLoginState extends State<PageLogin> {
                               controlAffinity: ListTileControlAffinity.leading,
                             ),
                           ),
-                          const Text(
+                          Text(
                             "Esqueceu sua senha?",
-                            style: TextStyle(
-                              color: Colors.black45,
-                              fontSize: 16,
-                            ),
+                            style: Theme.of(context).textTheme.subtitle2,
                           )
                         ],
                       ),
@@ -124,10 +110,6 @@ class _PageLoginState extends State<PageLogin> {
                         child: CustomButton(
                           widget: const Text(
                             "Entrar",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                            ),
                           ),
                           onAction: () {},
                         ),
@@ -139,23 +121,15 @@ class _PageLoginState extends State<PageLogin> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
                   "Ainda não tem uma conta?",
-                  style: TextStyle(
-                    color: Colors.black45,
-                    fontSize: 16,
-                  ),
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
-                SizedBox(
-                  width: 25,
-                ),
+                const SizedBox(width: 25),
                 Text(
                   "Criar Agora",
-                  style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700),
+                  style: Theme.of(context).textTheme.button,
                 ),
               ],
             )

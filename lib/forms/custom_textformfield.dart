@@ -37,12 +37,12 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText ?? false,
       initialValue: initialValue,
       controller: controller,
-      style: Theme.of(context).textTheme.bodyLarge,
+      style: Theme.of(context).textTheme.bodyText2,
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
         labelText: label,
         hintText: hint,
-        hintStyle: Theme.of(context).inputDecorationTheme.labelStyle,
+        hintStyle: Theme.of(context).textTheme.subtitle2,
       ),
     );
   }
