@@ -37,7 +37,24 @@ class PageRegisterNewIOT extends StatelessWidget {
                 label: "Descrição",
                 hint: "Digite uma descrição para o aparelho",
               ),
-              const SizedBox(height: 40),
+              Row(
+                children: const [
+                  Flexible(
+                    child: CustomTextFormField(
+                      label: "SSID",
+                      hint: "Digite o nome da rede Wifi",
+                    ),
+                  ),
+                  SizedBox(width: 20),
+                  Flexible(
+                    child: CustomTextFormField(
+                      label: "Senha",
+                      hint: "Digite a senha da rede Wifi",
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 35),
               SizedBox(
                 width: double.infinity,
                 height: 45,

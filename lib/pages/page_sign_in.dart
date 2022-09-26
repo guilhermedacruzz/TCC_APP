@@ -2,19 +2,20 @@ import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:tcc/forms/custom_button.dart';
 import 'package:tcc/forms/custom_textformfield.dart';
+import 'package:tcc/pages/page_sign_up.dart';
 
 import 'page_home.dart';
 
-class PageLogin extends StatefulWidget {
-  static String routeName = "/login";
+class PageSignIn extends StatefulWidget {
+  static String routeName = "/signin";
 
-  const PageLogin({super.key});
+  const PageSignIn({super.key});
 
   @override
-  State<PageLogin> createState() => _PageLoginState();
+  State<PageSignIn> createState() => _PageSignInState();
 }
 
-class _PageLoginState extends State<PageLogin> with TickerProviderStateMixin {
+class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
   bool hidePassword = true;
   bool checkedValue = false;
 
@@ -155,13 +156,18 @@ class _PageLoginState extends State<PageLogin> with TickerProviderStateMixin {
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                     const SizedBox(width: 25),
-                    Text(
-                      "Criar Agora",
-                      style: Theme.of(context).textTheme.button?.merge(
-                            TextStyle(
-                              color: Theme.of(context).highlightColor,
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(PageSignUp.routeName);
+                      },
+                      child: Text(
+                        "Criar Agora",
+                        style: Theme.of(context).textTheme.button?.merge(
+                              TextStyle(
+                                color: Theme.of(context).highlightColor,
+                              ),
                             ),
-                          ),
+                      ),
                     ),
                   ],
                 )

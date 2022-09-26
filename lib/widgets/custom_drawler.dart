@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../pages/page_config.dart';
-import '../pages/page_login.dart';
+import '../pages/page_sign_in.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -77,10 +77,18 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             const Divider(height: 30),
             ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text("Sair"),
+              leading: Icon(
+                Icons.logout,
+                color: Theme.of(context).highlightColor,
+              ),
+              title: Text(
+                "Sair",
+                style: TextStyle(
+                  color: Theme.of(context).highlightColor,
+                ),
+              ),
               onTap: () {
-                Navigator.of(context).pushNamed(PageLogin.routeName);
+                Navigator.of(context).pushNamed(PageSignIn.routeName);
               },
             )
           ],

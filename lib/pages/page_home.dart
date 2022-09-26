@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tcc/pages/page_register_new_IOT.dart';
 import 'package:tcc/widgets/trash/grafics.dart';
-import '../forms/custom_button.dart';
 import '../widgets/custom_drawler.dart';
 
 class PageHome extends StatefulWidget {
@@ -22,7 +20,23 @@ class _PageHomeState extends State<PageHome> {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
-        title: const Text("SAPA"),
+        title: SizedBox(
+          width: double.infinity,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/images/sapo.png",
+                height: 80,
+                fit: BoxFit.cover,
+              ),
+              Text(
+                "SAPA",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+            ],
+          ),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
