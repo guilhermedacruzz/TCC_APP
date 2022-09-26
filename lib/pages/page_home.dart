@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tcc/forms/custom_button.dart';
-
 import '../widgets/custom_drawler.dart';
 
 class PageHome extends StatefulWidget {

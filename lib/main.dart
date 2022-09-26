@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: "SAPA",
             debugShowCheckedModeBanner: false,
-            initialRoute: PageLogin.routeName,
+            initialRoute: PageHome.routeName,
             theme: Styles.themeData(true, context),
             routes: {
               PageHome.routeName: (context) => const PageHome(),

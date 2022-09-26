@@ -35,7 +35,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 3,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).primaryColor,
                 ),
                 borderRadius: const BorderRadius.all(Radius.circular(180)),
               ),
@@ -48,62 +48,31 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
               ),
             ),
-            const Text(
+            Text(
               "Diego Teixeira",
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.w700,
-                fontSize: 18,
-              ),
+              style: Theme.of(context).textTheme.headline6,
             ),
-            const Text(
+            Text(
               "diegoteixeira@yahoo.com.br",
-              style: TextStyle(
-                color: Colors.black45,
-                fontSize: 14,
-              ),
+              style: Theme.of(context).textTheme.subtitle2,
             ),
-            const Divider(
-              height: 30,
-            ),
+            const Divider(height: 30),
             const ListTile(
               leading: Icon(Icons.home),
-              title: Text(
-                "Home",
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
+              title: Text("Home"),
             ),
             const ListTile(
               leading: Icon(Icons.mobile_friendly),
-              title: Text(
-                "Meus dispositivos",
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
+              title: Text("Meus dispositivos"),
             ),
             const ListTile(
               leading: Icon(Icons.settings),
-              title: Text(
-                "Configurações",
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
+              title: Text("Configurações"),
             ),
-            const Divider(
-              height: 30,
-            ),
+            const Divider(height: 30),
             const ListTile(
               leading: Icon(Icons.logout),
-              title: Text(
-                "Sair",
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
+              title: Text("Sair"),
             )
           ],
         ),
