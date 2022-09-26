@@ -7,41 +7,40 @@ class Styles {
         headline1: TextStyle(
           letterSpacing: 2.0,
           fontWeight: FontWeight.w700,
-          color: isDarkTheme ? Colors.white70 : Colors.black87,
+          color: isDarkTheme ? Colors.white : Colors.black87,
         ),
         headline2: TextStyle(
           letterSpacing: 2.0,
           fontWeight: FontWeight.w700,
-          color: isDarkTheme ? Colors.white70 : Colors.black87,
+          color: isDarkTheme ? Colors.white : Colors.black87,
         ),
         headline3: TextStyle(
           letterSpacing: 2.0,
           fontWeight: FontWeight.w700,
-          color: isDarkTheme ? Colors.white70 : Colors.black87,
+          color: isDarkTheme ? Colors.white : Colors.black87,
         ),
         headline4: TextStyle(
           letterSpacing: 2.0,
           fontWeight: FontWeight.w700,
-          color: isDarkTheme ? Colors.white70 : Colors.black87,
+          color: isDarkTheme ? Colors.white : Colors.black87,
         ),
         headline5: TextStyle(
           fontWeight: FontWeight.w700,
-          color: isDarkTheme ? Colors.white70 : Colors.black87,
+          color: isDarkTheme ? Colors.white : Colors.black87,
         ),
         headline6: TextStyle(
           fontWeight: FontWeight.w700,
-          color: isDarkTheme ? Colors.white70 : Colors.black87,
+          color: isDarkTheme ? Colors.white : Colors.black87,
         ),
         subtitle1: TextStyle(
-          color: isDarkTheme ? Colors.white54 : Colors.black45,
+          color: isDarkTheme ? Colors.white70 : Colors.black45,
         ),
         subtitle2: TextStyle(
-          color: isDarkTheme ? Colors.white54 : Colors.black45,
+          color: isDarkTheme ? Colors.white70 : Colors.black45,
         ),
         button: const TextStyle(
           fontWeight: FontWeight.w700,
           fontSize: 20,
-          color: Colors.white,
         ),
       ),
       fontFamily: "Blinker",

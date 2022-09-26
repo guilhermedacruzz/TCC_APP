@@ -30,7 +30,7 @@ class _PageLoginState extends State<PageLogin> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Icon(
-                  Icons.access_alarm,
+                  Icons.auto_awesome,
                   size: Theme.of(context).textTheme.displayMedium!.fontSize,
                 ),
               ],

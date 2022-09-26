@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tcc/pages/page_register_new_IOT.dart';
 import 'notifiers/dark_theme_provider.dart';
 import 'pages/page_config.dart';
 import 'pages/page_home.dart';
@@ -45,6 +46,7 @@ class _MyAppState extends State<MyApp> {
             initialRoute: PageLogin.routeName,
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             routes: {
+              PageRegisterNewIOT.routeName: (context) => const PageRegisterNewIOT(),
               PageConfig.routeName: (context) => const PageConfig(),
               PageHome.routeName: (context) => const PageHome(),
               PageLogin.routeName: (context) => const PageLogin(),

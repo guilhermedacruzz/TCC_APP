@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:tcc/pages/page_register_new_IOT.dart';
 import 'package:tcc/widgets/grafics.dart';
 import '../forms/custom_button.dart';
 import '../widgets/custom_drawler.dart';
@@ -29,7 +30,9 @@ class _PageHomeState extends State<PageHome> {
           ),
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(PageRegisterNewIOT.routeName);
+            },
           ),
         ],
       ),
