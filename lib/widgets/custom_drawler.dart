@@ -38,7 +38,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 3,
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 borderRadius: const BorderRadius.all(Radius.circular(180)),
               ),

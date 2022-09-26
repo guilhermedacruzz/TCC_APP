@@ -60,7 +60,6 @@ class Styles {
           900: Color(0xFF5BCA70),
         },
       ),
-      primaryColor: isDarkTheme ? Colors.black : Colors.white,
       backgroundColor: isDarkTheme ? Colors.black : Colors.white,
       highlightColor: const Color(0xffBC9BDD),
       indicatorColor: const Color(0xff4F4C5F),

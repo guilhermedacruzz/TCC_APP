@@ -16,38 +16,40 @@ class PageRegisterNewIOT extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.all(35),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Cadastro de Dispositivos",
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            Text(
-              "Digite as informações solicitadas nos campos abaixo da maneira correta",
-              style: Theme.of(context).textTheme.subtitle2,
-            ),
-            const SizedBox(height: 20),
-            const CustomTextFormField(
-              label: "Nome",
-              hint: "Digite um nome para o aparelho",
-            ),
-            const CustomTextFormField(
-              label: "Descrição",
-              hint: "Digite uma descrição para o aparelho",
-            ),
-            const SizedBox(height: 40),
-            SizedBox(
-              width: double.infinity,
-              height: 45,
-              child: CustomButton(
-                widget: const Text(
-                  "Entrar",
-                ),
-                onAction: () {},
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Cadastro de Dispositivos",
+                style: Theme.of(context).textTheme.headline4,
               ),
-            ),
-          ],
+              Text(
+                "Digite as informações solicitadas nos campos abaixo da maneira correta",
+                style: Theme.of(context).textTheme.subtitle2,
+              ),
+              const SizedBox(height: 20),
+              const CustomTextFormField(
+                label: "Nome",
+                hint: "Digite um nome para o aparelho",
+              ),
+              const CustomTextFormField(
+                label: "Descrição",
+                hint: "Digite uma descrição para o aparelho",
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                width: double.infinity,
+                height: 45,
+                child: CustomButton(
+                  widget: const Text(
+                    "Entrar",
+                  ),
+                  onAction: () {},
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
