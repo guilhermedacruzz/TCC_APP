@@ -14,6 +14,7 @@ class GraficsTeste extends StatelessWidget {
       primaryXAxis: DateTimeAxis(),
       series: <ChartSeries>[
         StepLineSeries<ChartData, DateTime>(
+          color: Theme.of(context).highlightColor,
             dataSource: [
               for (int i = 0; i < 20; i++)
                 ChartData(DateTime.now().subtract(Duration(days: 370 * i)),

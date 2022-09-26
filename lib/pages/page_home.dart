@@ -70,7 +70,7 @@ class _PageHomeState extends State<PageHome> {
                           borderRadius: BorderRadius.circular(100),
                         ),
                         child: Icon(
-                          Icons.tiktok,
+                          Icons.garage,
                           color: Theme.of(context).backgroundColor,
                         ),
                       ),
@@ -79,7 +79,8 @@ class _PageHomeState extends State<PageHome> {
                         style: Theme.of(context).textTheme.headline6,
                       ),
                       subtitle: DefaultTextStyle(
-                        style: Theme.of(context).textTheme.bodyText2 as TextStyle,
+                        style:
+                            Theme.of(context).textTheme.bodyText2 as TextStyle,
                         child: Row(
                           children: const [
                             Text("Fechado"),
@@ -103,7 +104,7 @@ class _PageHomeState extends State<PageHome> {
                                     borderRadius: BorderRadius.circular(100),
                                   ),
                                   child: Icon(
-                                    Icons.tiktok,
+                                    Icons.garage,
                                     color: Theme.of(context).backgroundColor,
                                   ),
                                 ),
@@ -131,11 +132,19 @@ class _PageHomeState extends State<PageHome> {
                 ),
               ),
               const SizedBox(height: 15),
-              IconButton(
-                iconSize: Theme.of(context).textTheme.headline1?.fontSize,
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.power_settings_new,
+              Container(
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: IconButton(
+                  color: Theme.of(context).backgroundColor,
+                  iconSize: Theme.of(context).textTheme.headline1?.fontSize,
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.power_settings_new,
+                  ),
                 ),
               ),
               Text(
