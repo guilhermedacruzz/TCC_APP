@@ -52,80 +52,102 @@ class _PageHomeState extends State<PageHome> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-              child: SizedBox(
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Bem Vindo Diego!",
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                    Text(
-                      "Qualquer texto aqui",
-                      style: Theme.of(context).textTheme.subtitle2,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Card(
-              child: Theme(
-                data: ThemeData().copyWith(dividerColor: Colors.transparent),
-                child: ExpansionTile(
-                  iconColor: Theme.of(context).expansionTileTheme.iconColor,
-                  textColor: Theme.of(context).expansionTileTheme.textColor,
-                  collapsedIconColor:
-                      Theme.of(context).expansionTileTheme.collapsedIconColor,
-                  collapsedTextColor:
-                      Theme.of(context).expansionTileTheme.collapsedTextColor,
-                  title: ListTile(
-                    leading: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(100),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Card(
+                child: Theme(
+                  data: ThemeData().copyWith(dividerColor: Colors.transparent),
+                  child: ExpansionTile(
+                    iconColor: Theme.of(context).highlightColor,
+                    collapsedIconColor: Theme.of(context).highlightColor,
+                    title: ListTile(
+                      leading: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child: Icon(
+                          Icons.tiktok,
+                          color: Theme.of(context).backgroundColor,
+                        ),
                       ),
-                      child: Icon(
-                        Icons.tiktok,
-                        color: Theme.of(context).backgroundColor,
+                      title: Text(
+                        "Portão da Frente",
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      subtitle: DefaultTextStyle(
+                        style: Theme.of(context).textTheme.bodyText2 as TextStyle,
+                        child: Row(
+                          children: const [
+                            Text("Fechado"),
+                            SizedBox(width: 20),
+                            Text("12:00:00"),
+                          ],
+                        ),
                       ),
                     ),
-                    title: Text(
-                      "Portão da Frente",
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                    subtitle: DefaultTextStyle(
-                      style: Theme.of(context).textTheme.bodyText2 as TextStyle,
-                      child: Row(
-                        children: const [
-                          Text("Fechado"),
-                          SizedBox(width: 20),
-                          Text("12:00:00"),
-                        ],
-                      ),
-                    ),
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Column(
+                          children: [
+                            for (var i = 0; i < 3; i++)
+                              ListTile(
+                                leading: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).highlightColor,
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                  child: Icon(
+                                    Icons.tiktok,
+                                    color: Theme.of(context).backgroundColor,
+                                  ),
+                                ),
+                                title: Text(
+                                  "Portão da Frente",
+                                  style: Theme.of(context).textTheme.headline6,
+                                ),
+                                subtitle: DefaultTextStyle(
+                                  style: Theme.of(context).textTheme.bodyText2
+                                      as TextStyle,
+                                  child: Row(
+                                    children: const [
+                                      Text("Fechado"),
+                                      SizedBox(width: 20),
+                                      Text("12:00:00"),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      )
+                    ],
                   ),
-                  children: const [
-                    GraficsTeste(),
-                  ],
                 ),
               ),
-            )
-          ],
+              const SizedBox(height: 15),
+              IconButton(
+                iconSize: Theme.of(context).textTheme.headline1?.fontSize,
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.power_settings_new,
+                ),
+              ),
+              Text(
+                "FECHADO",
+                style: Theme.of(context).textTheme.headline4,
+              ),
+              const SizedBox(height: 15),
+              const GraficsTeste(),
+            ],
+          ),
         ),
       ),
     );
   }
-}
-
-class _Infections {
-  _Infections(this.hours, this.opened);
-
-  final String hours;
-  final double opened;
 }

@@ -74,12 +74,6 @@ class Styles {
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
       ),
-      expansionTileTheme: const ExpansionTileThemeData(
-        collapsedIconColor: Color(0xFFFFD87D),
-        iconColor: Color(0xFFFFD87D),
-        collapsedTextColor: Color(0xFFFFD87D),
-        textColor: Color(0xFFFFD87D),
-      ),
     );
   }
 }

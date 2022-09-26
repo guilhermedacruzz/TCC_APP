@@ -11,33 +11,24 @@ class GraficsTeste extends StatelessWidget {
     final Random random = Random();
 
     return SfCartesianChart(
-      borderColor: Colors.transparent,
-      primaryXAxis: CategoryAxis(),
-      primaryYAxis: NumericAxis(isVisible: false),
-      // Chart title
-      title: ChartTitle(text: 'Estado do Portão ao longo do dia'),
-      // Enable legend
-      legend: Legend(isVisible: true),
-      // Enable tooltip
-      tooltipBehavior: TooltipBehavior(enable: true),
-      series: <ChartSeries<_Infections, String>>[
-        LineSeries<_Infections, String>(
-          dataSource: <_Infections>[
-            for (var i = 0; i < 40; i++)
-              _Infections(i, random.nextBool() ? "Fechado" : "Aberto"),
-          ],
-          xValueMapper: (_Infections opened, _) => opened.opened,
-          yValueMapper: (_Infections opened, _) => opened.hours,
-          // Enable data label
-        ),
+      primaryXAxis: DateTimeAxis(),
+      series: <ChartSeries>[
+        StepLineSeries<ChartData, DateTime>(
+            dataSource: [
+              for (int i = 0; i < 20; i++)
+                ChartData(DateTime.now().subtract(Duration(days: 370 * i)),
+                    random.nextBool() ? 0 : 1),
+            ],
+            xValueMapper: (ChartData data, _) => data.x,
+            yValueMapper: (ChartData data, _) => data.y)
       ],
     );
   }
 }
 
-class _Infections {
-  _Infections(this.hours, this.opened);
+class ChartData {
+  ChartData(this.x, this.y);
 
-  final int hours;
-  final String opened;
+  final DateTime x;
+  final int y;
 }
