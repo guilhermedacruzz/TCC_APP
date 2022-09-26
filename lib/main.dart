@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'notifiers/dark_theme_provider.dart';
+import 'pages/page_config.dart';
 import 'pages/page_home.dart';
 import 'pages/page_login.dart';
 import 'utils/style.dart';
@@ -41,9 +42,10 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: "SAPA",
             debugShowCheckedModeBanner: false,
-            initialRoute: PageHome.routeName,
-            theme: Styles.themeData(true, context),
+            initialRoute: PageLogin.routeName,
+            theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             routes: {
+              PageConfig.routeName: (context) => const PageConfig(),
               PageHome.routeName: (context) => const PageHome(),
               PageLogin.routeName: (context) => const PageLogin(),
             },

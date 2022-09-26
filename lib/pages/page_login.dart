@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tcc/forms/custom_button.dart';
 import 'package:tcc/forms/custom_textformfield.dart';
 
+import 'page_home.dart';
+
 class PageLogin extends StatefulWidget {
   static String routeName = "/login";
 
@@ -111,7 +113,9 @@ class _PageLoginState extends State<PageLogin> {
                           widget: const Text(
                             "Entrar",
                           ),
-                          onAction: () {},
+                          onAction: () {
+                            Navigator.of(context).pushNamed(PageHome.routeName);
+                          },
                         ),
                       ),
                     ]),
