@@ -45,18 +45,18 @@ class Styles {
       ),
       fontFamily: "Blinker",
       primarySwatch: const MaterialColor(
-        0xFFFFD166,
+        0xFFA7D86D,
         <int, Color>{
-          50: Color(0xFFFFF9ED),
-          100: Color(0xFFFFF1D1),
-          200: Color(0xFFFFE8B3),
-          300: Color(0xFFFFDF94),
-          400: Color(0xFFFFD87D),
-          500: Color(0xFFFFD166),
-          600: Color(0xFFFFCC5E),
-          700: Color(0xFFFFC653),
-          800: Color(0xFFFFC049),
-          900: Color(0xFFFFB538),
+          50: Color(0xFFF4FAED),
+          100: Color(0xFFE5F3D3),
+          200: Color(0xFFD3ECB6),
+          300: Color(0xFFC1E499),
+          400: Color(0xFFB4DE83),
+          500: Color(0xFFA7D86D),
+          600: Color(0xFF9FD465),
+          700: Color(0xFF96CE5A),
+          800: Color(0xFF8CC850),
+          900: Color(0xFF7CBF3E),
         },
       ),
       primaryColor: isDarkTheme ? Colors.black : Colors.white,
@@ -65,9 +65,10 @@ class Styles {
       canvasColor: isDarkTheme ? Colors.black : Colors.grey[50],
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       buttonTheme: Theme.of(context).buttonTheme.copyWith(
-          colorScheme: isDarkTheme
-              ? const ColorScheme.dark()
-              : const ColorScheme.light()),
+            colorScheme: isDarkTheme
+                ? const ColorScheme.dark()
+                : const ColorScheme.light(),
+          ),
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
       ),
@@ -76,7 +77,6 @@ class Styles {
         iconColor: Color(0xFFFFD87D),
         collapsedTextColor: Color(0xFFFFD87D),
         textColor: Color(0xFFFFD87D),
-        backgroundColor: Colors.red
       ),
     );
   }

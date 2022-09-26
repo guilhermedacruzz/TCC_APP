@@ -29,9 +29,10 @@ class _PageLoginState extends State<PageLogin> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Icon(
-                  Icons.auto_awesome,
-                  size: Theme.of(context).textTheme.displayMedium!.fontSize,
+                Image.asset(
+                  "assets/images/sapo.png",
+                  height: Theme.of(context).textTheme.displayMedium?.fontSize,
+                  fit: BoxFit.cover,
                 ),
               ],
             ),

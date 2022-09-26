@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tcc/pages/page_register_new_IOT.dart';
-import 'package:tcc/widgets/grafics.dart';
+import 'package:tcc/widgets/trash/grafics.dart';
 import '../forms/custom_button.dart';
 import '../widgets/custom_drawler.dart';
 

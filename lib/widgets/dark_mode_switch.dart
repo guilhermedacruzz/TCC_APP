@@ -24,7 +24,7 @@ class _SwitchDarkModeState extends State<SwitchDarkMode> {
       onPressed: () {
         _changeTheme();
       },
-      icon: _value ? const Icon(Icons.dark_mode) : const Icon(Icons.light_mode),
+      icon: _value ? const Icon(Icons.light_mode) : const Icon(Icons.dark_mode),
     );
   }
 }
