@@ -39,6 +39,8 @@ dependencies:
   provider: ^6.0.3
   shared_preferences: ^2.0.15
   animated_background: ^2.0.0
+  http: ^0.13.5
+  validators: ^3.0.0
 
 dev_dependencies:
   flutter_test:

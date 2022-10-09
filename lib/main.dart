@@ -6,6 +6,7 @@ import 'pages/page_home.dart';
 import 'pages/page_register_new_IOT.dart';
 import 'pages/page_sign_in.dart';
 import 'pages/page_sign_up.dart';
+import 'services/service_autentication.dart';
 import 'utils/style.dart';
 
 void main() {
@@ -35,10 +36,17 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) {
-        return themeChangeProvider;
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) {
+            return themeChangeProvider;
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ServiceAutentication(),
+        ),
+      ],
       child: Consumer<DarkThemeProvider>(
         builder: (BuildContext contex, value, Widget? child) {
           return MaterialApp(
@@ -47,7 +55,8 @@ class _MyAppState extends State<MyApp> {
             initialRoute: PageSignIn.routeName,
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             routes: {
-              PageRegisterNewIOT.routeName: (context) => const PageRegisterNewIOT(),
+              PageRegisterNewIOT.routeName: (context) =>
+                  const PageRegisterNewIOT(),
               PageConfig.routeName: (context) => const PageConfig(),
               PageHome.routeName: (context) => const PageHome(),
               PageSignIn.routeName: (context) => const PageSignIn(),
