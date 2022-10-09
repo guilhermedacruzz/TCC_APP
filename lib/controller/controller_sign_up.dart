@@ -7,6 +7,7 @@ class ControllerSignUp with ChangeNotifier {
   String _email = ''; // variavel que guarda o email
   String _password = ''; // variavel que guarda a senha
   String _confirmationPassword = ''; // variavel que guarda a senha da confirmação
+  bool _register = false;
   Status _processing = Status.idle;
   ActionResult _result = ActionResult.none;
   String? _errormsg;
@@ -67,6 +68,10 @@ class ControllerSignUp with ChangeNotifier {
     _confirmationPassword = val;
   }
 
+  setRegister(bool register) {
+    _register = register;
+  }
+
   ///Invoca um dos métodos do serviço de autenticação
   ///e processa o result.
   execute() async {
@@ -76,7 +81,12 @@ class ControllerSignUp with ChangeNotifier {
     notifyListeners();
 
     String? ret;
-    ret = await _serviceAutentication.singUp(_email, _password);
+    if(_register) {
+      ret = await _serviceAutentication.singUp(_email, _password);
+    }
+    else {
+      ret = await _serviceAutentication.singIn(_email, _password);
+    }
 
     if (ret != null) {
       _errormsg = ret;
