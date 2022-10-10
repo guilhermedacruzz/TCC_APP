@@ -95,7 +95,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
               ),
               onTap: () {
-                Navigator.of(context).pushNamed(PageSignIn.routeName);
+                _autenticationService.logout();
               },
             )
           ],

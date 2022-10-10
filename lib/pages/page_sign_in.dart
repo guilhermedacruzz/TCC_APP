@@ -98,8 +98,8 @@ class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
                 child: Column(
                   children: [
                     CustomTextFormField(
-                      label: "Usuário, Email ou Telefone",
-                      hint: "Digite o seu usuário",
+                      label: "Email",
+                      hint: "Digite o seu email",
                       validator: _controller.validateEmail,
                       onChanged: (value) {
                         _controller.setEmail(value ?? '');

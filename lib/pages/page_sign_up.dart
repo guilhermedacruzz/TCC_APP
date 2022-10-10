@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tcc/pages/page_splash.dart';
 import '../controller/controller_sign_up.dart';
 import '../forms/custom_button.dart';
 import '../forms/custom_textformfield.dart';
@@ -64,7 +65,7 @@ class _PageSignUpState extends State<PageSignUp> with TickerProviderStateMixin {
       footerButtonText: "Entre Agora",
       footerAction: () {
         _controller.setRegister(false);
-        Navigator.of(context).pushNamed(PageSignIn.routeName);
+        Navigator.of(context).pushNamed(PageSplash.routeName);
       },
       child: Form(
         key: _formKey,
@@ -97,8 +98,16 @@ class _PageSignUpState extends State<PageSignUp> with TickerProviderStateMixin {
                 child: Column(
                   children: [
                     CustomTextFormField(
-                      label: "Usuário, Email ou Telefone",
-                      hint: "Digite o seu usuário",
+                      label: "Username",
+                      hint: "Digite o seu username",
+                      validator: _controller.validateUsername,
+                      onChanged: (value) {
+                        _controller.setUsername(value ?? '');
+                      },
+                    ),
+                    CustomTextFormField(
+                      label: "Email",
+                      hint: "Digite o seu email",
                       validator: _controller.validateEmail,
                       onChanged: (value) {
                         _controller.setEmail(value ?? '');

@@ -4,6 +4,7 @@ import '../services/service_autentication.dart';
 import '../utils/enums.dart';
 
 class ControllerSignUp with ChangeNotifier {
+  String _username = '';
   String _email = ''; // variavel que guarda o email
   String _password = ''; // variavel que guarda a senha
   String _confirmationPassword = ''; // variavel que guarda a senha da confirmação
@@ -22,8 +23,21 @@ class ControllerSignUp with ChangeNotifier {
   bool get hasError => _result == ActionResult.error;
   String get errorMsg => _errormsg ?? '';
 
+  String get username => _username;
   String get email => _email;
   String get password => _password;
+
+
+  // Validação do email
+  String? validateUsername(String? val) {
+    if (val == null || val.isEmpty) {
+      return "O Username não pode ser vazio";
+    }
+    if (val.length < 8) {
+      return "Username inválido";
+    }
+    return null;
+  }
 
   // Validação do email
   String? validateEmail(String? val) {
@@ -55,6 +69,9 @@ class ControllerSignUp with ChangeNotifier {
     return null;
   }
 
+  setUsername(String val) {
+    _username = val;
+  }
   // Setters
   setEmail(String val) {
     _email = val;
@@ -82,7 +99,7 @@ class ControllerSignUp with ChangeNotifier {
 
     String? ret;
     if(_register) {
-      ret = await _serviceAutentication.singUp(_email, _password);
+      ret = await _serviceAutentication.singUp(_email, _password, _username);
     }
     else {
       ret = await _serviceAutentication.singIn(_email, _password);

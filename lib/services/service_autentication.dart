@@ -14,16 +14,28 @@ class ServiceAutentication with ChangeNotifier {
   bool _logged = false;
   bool get logged => _logged;
 
-  Future<String?> singUp(String email, String password) async {
-    return _signUpOrIn(email, password, register: true);
+  Future<String?> singUp(String email, String password, String username) async {
+    return _signUpOrIn(
+      email: email,
+      password: password,
+      register: true,
+      displayName: username,
+    );
   }
 
   Future<String?> singIn(String email, String password) async {
-    return _signUpOrIn(email, password);
+    return _signUpOrIn(
+      email: email,
+      password: password,
+    );
   }
 
-  Future<String?> _signUpOrIn(String email, String password,
-      {bool register = false}) async {
+  Future<String?> _signUpOrIn({
+    required email,
+    required password,
+    register = false,
+    displayName,
+  }) async {
     String? msg;
 
     final url = Uri.https(
@@ -35,9 +47,12 @@ class ServiceAutentication with ChangeNotifier {
     final response = await http.post(
       url,
       body: json.encode({
-        'email': email,
-        'password': password,
-        'returnSecureToken': true,
+        ...{
+          'email': email,
+          'password': password,
+          'returnSecureToken': true,
+        },
+        ...(register) ? {'displayName': displayName} : {}
       }),
     );
 
@@ -58,6 +73,7 @@ class ServiceAutentication with ChangeNotifier {
 
     final user = User(
       id: data['localId'],
+      username: data['displayName'],
       email: email,
       token: data['idToken'],
       expiration: DateTime.now().add(
