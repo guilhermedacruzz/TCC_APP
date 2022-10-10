@@ -4,7 +4,6 @@ import '../controller/controller_sign_up.dart';
 import '../forms/custom_button.dart';
 import '../forms/custom_textformfield.dart';
 import '../services/service_autentication.dart';
-import 'page_home.dart';
 import 'page_sign_up.dart';
 import 'page_sign_base.dart';
 
@@ -98,9 +97,13 @@ class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
               SizedBox(
                 child: Column(
                   children: [
-                    const CustomTextFormField(
+                    CustomTextFormField(
                       label: "Usuário, Email ou Telefone",
                       hint: "Digite o seu usuário",
+                      validator: _controller.validateEmail,
+                      onChanged: (value) {
+                        _controller.setEmail(value ?? '');
+                      },
                     ),
                     CustomTextFormField(
                       label: 'Senha',
@@ -118,6 +121,10 @@ class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
                         },
                       ),
                       obscureText: hidePassword,
+                      validator: _controller.validatePassword,
+                      onChanged: (value) {
+                        _controller.setPassword(value ?? '');
+                      },
                     ),
                     Row(
                       children: [
@@ -151,7 +158,6 @@ class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
                             style: Theme.of(context).textTheme.button),
                         onAction: () {
                           execute();
-                          Navigator.of(context).pushNamed(PageHome.routeName);
                         },
                       ),
                     ),
