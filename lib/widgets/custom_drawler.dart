@@ -59,7 +59,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
             ),
             Text(
-              _autenticationService.user!.username,
+              _autenticationService.user!.name,
               style: Theme.of(context).textTheme.headline6,
             ),
             Text(
