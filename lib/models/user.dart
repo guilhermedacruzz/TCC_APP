@@ -6,7 +6,7 @@ class User {
 
   User({
     required this.id,
-    this.name = "Teste Teste",
+    required this.name,
     required this.email,
     required this.token,
   });
