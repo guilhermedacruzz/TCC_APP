@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tcc/pages/carousel/page_carousel.dart';
 import 'package:tcc/pages/page_splash.dart';
 import 'notifiers/dark_theme_provider.dart';
 import 'pages/page_config.dart';
@@ -53,7 +54,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: "SAPA",
             debugShowCheckedModeBanner: false,
-            initialRoute: PageSplash.routeName,
+            initialRoute: PageCarousel.routeName,
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             routes: {
               PageRegisterNewIOT.routeName: (context) =>
@@ -62,7 +63,8 @@ class _MyAppState extends State<MyApp> {
               PageHome.routeName: (context) => const PageHome(),
               PageSignIn.routeName: (context) => const PageSignIn(),
               PageSignUp.routeName: (context) => const PageSignUp(),
-              PageSplash.routeName:(context) => const PageSplash(),
+              PageSplash.routeName: (context) => const PageSplash(),
+              PageCarousel.routeName: (context) => const PageCarousel(),
             },
           );
         },

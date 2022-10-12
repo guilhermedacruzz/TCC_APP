@@ -41,6 +41,7 @@ dependencies:
   animated_background: ^2.0.0
   http: ^0.13.5
   validators: ^3.0.0
+  carousel_slider: ^4.1.1
 
 dev_dependencies:
   flutter_test:
@@ -97,6 +98,7 @@ flutter:
   assets:
     - assets/images/anime.gif
     - assets/images/sapo.png
+    - assets/images/carousel/1.png
   fonts:
     - family: Blinker
       fonts:
