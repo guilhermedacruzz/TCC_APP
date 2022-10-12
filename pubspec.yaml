@@ -99,6 +99,7 @@ flutter:
     - assets/images/anime.gif
     - assets/images/sapo.png
     - assets/images/carousel/1.png
+    - img/ 
   fonts:
     - family: Blinker
       fonts:
