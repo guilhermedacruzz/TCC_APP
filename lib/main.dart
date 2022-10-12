@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tcc/pages/first_page.dart';
 import 'package:tcc/pages/welcome_page.dart';
 
 void main() {
