@@ -36,9 +36,9 @@ class ServiceAutentication with ChangeNotifier {
     }
 
     final data = json.decode(response.body);
-
-    if (response.statusCode == 400) {
-      if (data['error']['message'] == 'EMAIL_EXISTS') {
+    
+    if (data['statusCode'] == 400) {
+      if (data['message'] == 'Email duplicate') {
         return 'E-mail já cadastrado';
       } 
       return 'Erro!';
