@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import '../models/user.dart';
 
 class ServiceAutentication with ChangeNotifier {
-  static const urlDominion = '192.168.100.110:3000';
+  static const urlDominion = 'localhost:3000';
   static const signUpEndPoint = "/users/signup";
   static const signInEndPoint = "/users/signin";
 

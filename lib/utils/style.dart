@@ -62,7 +62,7 @@ class Styles {
       ),
       backgroundColor: isDarkTheme ? Colors.black : Colors.white,
       highlightColor: const Color(0xffBC9BDD),
-      indicatorColor: const Color(0xff4F4C5F),
+      indicatorColor: const Color(0xff976dc7),
       disabledColor: Colors.grey,
       canvasColor: isDarkTheme ? Colors.black : Colors.grey[50],
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
