@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:tcc/pages/page_splash.dart';
+import '../forms/custom_button.dart';
 import '../forms/custom_button_with_icon.dart';
 import '../widgets/trash/back.dart';
 import '../widgets/trash/background.dart';
 
 class PageWelcome extends StatefulWidget {
-  static String routeName = "/welcome"; 
+  static String routeName = "/welcome";
   const PageWelcome({super.key});
 
   @override
@@ -62,22 +64,50 @@ class _PageWelcomeState extends State<PageWelcome> {
                       ],
                     ),
                     Column(
-                      children: List.generate(
-                        images.length,
-                        (indexDots) {
-                          return Container(
-                            margin: const EdgeInsets.only(bottom: 2),
-                            width: 8,
-                            height: (indexDots == index) ? 25 : 8,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: (indexDots == index)
-                                  ? Theme.of(context).highlightColor
-                                  : Theme.of(context).highlightColor.withOpacity(0.3),
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        ...List.generate(
+                          images.length,
+                          (indexDots) {
+                            return Container(
+                              margin: const EdgeInsets.only(bottom: 2),
+                              width: 8,
+                              height: (indexDots == index) ? 25 : 8,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: (indexDots == index)
+                                    ? Theme.of(context).highlightColor
+                                    : Theme.of(context)
+                                        .highlightColor
+                                        .withOpacity(0.3),
+                              ),
+                            );
+                          },
+                        ),
+                        const Spacer(),
+                        if (index == images.length - 1)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 40),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                SizedBox(
+                                  width: 120,
+                                  height: 45,
+                                  child: CustomButton(
+                                    widget: Text("Começar",
+                                        style:
+                                            Theme.of(context).textTheme.button),
+                                    onAction: () {
+                                      Navigator.of(context)
+                                          .pushNamed(PageSplash.routeName);
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                      ],
                     ),
                   ],
                 ),

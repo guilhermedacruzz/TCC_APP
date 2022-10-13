@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc/pages/page_splash.dart';
+import 'package:tcc/pages/page_welcome.dart';
 import '../controller/controller_sign_up.dart';
 import '../forms/custom_button.dart';
 import '../forms/custom_textformfield.dart';
@@ -156,6 +157,7 @@ class _PageSignUpState extends State<PageSignUp> with TickerProviderStateMixin {
                                   style: Theme.of(context).textTheme.button),
                               onAction: () {
                                 execute();
+                                Navigator.of(context).pushNamed(PageWelcome.routeName);
                               },
                             ),
                           ),
