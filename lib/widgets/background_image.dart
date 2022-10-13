@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class Background extends StatelessWidget {
+class BackgroundImage extends StatelessWidget {
   final Widget child;
 
-  const Background({
+  const BackgroundImage({
     super.key,
     required this.child,
   });
@@ -16,7 +16,7 @@ class Background extends StatelessWidget {
       children: [
         Positioned(
           bottom: 40,
-          right: (size.width / 2) - 240,
+          left: (size.width / 2) - 240,
           child: Image.asset(
             "img/kjhkjklj.png",   
             fit: BoxFit.cover,

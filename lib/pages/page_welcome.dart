@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tcc/pages/page_splash.dart';
 import '../forms/custom_button.dart';
 import '../forms/custom_button_with_icon.dart';
-import '../widgets/trash/back.dart';
-import '../widgets/trash/background.dart';
+import '../widgets/background_image.dart';
 
 class PageWelcome extends StatefulWidget {
   static String routeName = "/welcome";
@@ -32,7 +31,8 @@ class _PageWelcomeState extends State<PageWelcome> {
             width: double.maxFinite,
             height: double.maxFinite,
             color: Theme.of(context).backgroundColor,
-            child: Background(
+            padding: const EdgeInsets.all(15),
+            child: BackgroundImage(
               child: Container(
                 margin: const EdgeInsets.only(top: 120, right: 20, left: 20),
                 child: Row(
