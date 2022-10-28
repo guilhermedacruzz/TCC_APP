@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tcc/pages/page_recover_password.dart';
+import 'package:tcc/widgets/custom_text_button.dart';
 import '../controller/controller_sign_up.dart';
 import '../forms/custom_button.dart';
 import '../forms/custom_textformfield.dart';
@@ -84,9 +86,7 @@ class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
               hint: 'Digite a sua senha',
               suffixIcon: IconButton(
                 icon: Icon(
-                  !hidePassword
-                      ? Icons.remove_red_eye
-                      : Icons.visibility_off,
+                  !hidePassword ? Icons.remove_red_eye : Icons.visibility_off,
                 ),
                 onPressed: () {
                   setState(() {
@@ -118,18 +118,22 @@ class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
-                Text(
-                  "Esqueceu sua senha?",
-                  style: Theme.of(context).textTheme.subtitle2,
-                )
+                CustomTextButton(
+                  text: "Esqueceu sua senha?",
+                  onAction: () {
+                    Navigator.of(context).pushNamed(PageRecoverPage.routeName);
+                  },
+                ),
               ],
             ),
             SizedBox(
               width: double.infinity,
               height: 45,
               child: CustomButton(
-                widget: Text("Entrar",
-                    style: Theme.of(context).textTheme.button),
+                widget: Text(
+                  "Entrar",
+                  style: Theme.of(context).textTheme.button,
+                ),
                 onAction: () {
                   execute();
                 },

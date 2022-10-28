@@ -1,5 +1,6 @@
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
+import 'package:tcc/widgets/custom_text_button.dart';
 
 class PageBase extends StatefulWidget {
   final String title1;
@@ -99,18 +100,14 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                     const SizedBox(width: 25),
-                    TextButton(
-                      onPressed: () {
-                        widget.footerAction();
-                      },
-                      child: Text(
-                        widget.footerButtonText,
-                        style: Theme.of(context).textTheme.button?.merge(
-                              TextStyle(
-                                color: Theme.of(context).highlightColor,
-                              ),
+                    CustomTextButton(
+                      text: widget.footerButtonText,
+                      onAction: widget.footerAction,
+                      textStyle: Theme.of(context).textTheme.button?.merge(
+                            TextStyle(
+                              color: Theme.of(context).highlightColor,
                             ),
-                      ),
+                          ),
                     ),
                   ],
                 )

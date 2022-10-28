@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tcc/pages/page_splash.dart';
 import '../controller/controller_sign_up.dart';
 import '../forms/custom_button.dart';
 import '../forms/custom_textformfield.dart';
@@ -16,7 +17,8 @@ class PageRecoverPage extends StatefulWidget {
   State<PageRecoverPage> createState() => _PageRecoverPageState();
 }
 
-class _PageRecoverPageState extends State<PageRecoverPage> with TickerProviderStateMixin {
+class _PageRecoverPageState extends State<PageRecoverPage>
+    with TickerProviderStateMixin {
   bool hidePassword = true;
   bool checkedValue = false;
   late ControllerSignUp _controller;
@@ -84,9 +86,7 @@ class _PageRecoverPageState extends State<PageRecoverPage> with TickerProviderSt
               hint: 'Digite a sua senha',
               suffixIcon: IconButton(
                 icon: Icon(
-                  !hidePassword
-                      ? Icons.remove_red_eye
-                      : Icons.visibility_off,
+                  !hidePassword ? Icons.remove_red_eye : Icons.visibility_off,
                 ),
                 onPressed: () {
                   setState(() {
@@ -100,41 +100,32 @@ class _PageRecoverPageState extends State<PageRecoverPage> with TickerProviderSt
                 _controller.setPassword(value ?? '');
               },
             ),
-            Row(
-              children: [
-                Flexible(
-                  child: CheckboxListTile(
-                    activeColor: Theme.of(context).indicatorColor,
-                    title: Text(
-                      "Lembrar-me",
-                      style: Theme.of(context).textTheme.subtitle2,
+            CustomTextFormField(
+              label: 'Confirme sua senha',
+              hint: 'Digite a sua senha',
+              obscureText: true,
+              validator: _controller.validateDifferentPassword,
+              onChanged: (value) {
+                _controller.setConfirmationPassword(value ?? '');
+              },
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            _controller.processing
+                ? const CircularProgressIndicator()
+                : SizedBox(
+                    width: double.infinity,
+                    height: 45,
+                    child: CustomButton(
+                      widget: Text("Criar",
+                          style: Theme.of(context).textTheme.button),
+                      onAction: () {
+                        execute();
+                        Navigator.of(context).pushNamed(PageSplash.routeName);
+                      },
                     ),
-                    value: checkedValue,
-                    onChanged: (newValue) {
-                      setState(() {
-                        checkedValue = newValue!;
-                      });
-                    },
-                    controlAffinity: ListTileControlAffinity.leading,
                   ),
-                ),
-                Text(
-                  "Esqueceu sua senha?",
-                  style: Theme.of(context).textTheme.subtitle2,
-                )
-              ],
-            ),
-            SizedBox(
-              width: double.infinity,
-              height: 45,
-              child: CustomButton(
-                widget: Text("Entrar",
-                    style: Theme.of(context).textTheme.button),
-                onAction: () {
-                  execute();
-                },
-              ),
-            ),
           ],
         ),
       ),
