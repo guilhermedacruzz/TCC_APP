@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tcc/pages/page_recover_password.dart';
 import 'package:tcc/pages/page_splash.dart';
 import 'notifiers/dark_theme_provider.dart';
 import 'pages/page_config.dart';
@@ -54,7 +55,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: "SAPA",
             debugShowCheckedModeBanner: false,
-            initialRoute: PageWelcome.routeName,
+            initialRoute: PageRecoverPage.routeName,
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             routes: {
               PageRegisterNewIOT.routeName: (context) =>
@@ -63,6 +64,7 @@ class _MyAppState extends State<MyApp> {
               PageHome.routeName: (context) => const PageHome(),
               PageSignIn.routeName: (context) => const PageSignIn(),
               PageSignUp.routeName: (context) => const PageSignUp(),
+              PageRecoverPage.routeName: (context) => const PageRecoverPage(),
               PageSplash.routeName: (context) => const PageSplash(),
               PageWelcome.routeName: (context) => const PageWelcome(),
             },

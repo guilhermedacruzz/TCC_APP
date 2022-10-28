@@ -26,7 +26,6 @@ class PageBase extends StatefulWidget {
 }
 
 class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +62,35 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
                     ),
                   ],
                 ),
-                widget.child,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.title1,
+                              style: Theme.of(context).textTheme.headline2,
+                            ),
+                            Text(
+                              widget.title2,
+                              style: Theme.of(context).textTheme.headline2,
+                            ),
+                            Text(
+                              widget.subtitle,
+                              style: Theme.of(context).textTheme.subtitle1,
+                            ),
+                          ],
+                        ),
+                      ),
+                      widget.child,
+                    ],
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

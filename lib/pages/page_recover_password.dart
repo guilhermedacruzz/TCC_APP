@@ -7,16 +7,16 @@ import '../services/service_autentication.dart';
 import 'page_sign_up.dart';
 import 'page_sign_base.dart';
 
-class PageSignIn extends StatefulWidget {
-  static String routeName = "/signin";
+class PageRecoverPage extends StatefulWidget {
+  static String routeName = "/recoverpassword";
 
-  const PageSignIn({super.key});
+  const PageRecoverPage({super.key});
 
   @override
-  State<PageSignIn> createState() => _PageSignInState();
+  State<PageRecoverPage> createState() => _PageRecoverPageState();
 }
 
-class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
+class _PageRecoverPageState extends State<PageRecoverPage> with TickerProviderStateMixin {
   bool hidePassword = true;
   bool checkedValue = false;
   late ControllerSignUp _controller;
@@ -58,9 +58,9 @@ class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return PageBase(
-      title1: "OLÁ !",
-      title2: "BEM VINDO",
-      subtitle: "Estavamos esperando por você, entre com as suas informações",
+      title1: "OH, NÃO!",
+      title2: "EU ESQUECI",
+      subtitle: "Entre com o seu email para definir a nova senha",
       footerText: "Ainda não tem uma conta?",
       footerButtonText: "Criar Agora",
       footerAction: () {
