@@ -1,10 +1,8 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:tcc/services/service_autentication.dart';
 import 'package:tcc/utils/enums.dart';
-import 'package:validators/validators.dart';
 
-
-class ControllerSignUp with ChangeNotifier {
+class ControllerConfig with ChangeNotifier {
   String _username = '';
   Status _processing = Status.idle;
   ActionResult _result = ActionResult.none;
@@ -12,7 +10,7 @@ class ControllerSignUp with ChangeNotifier {
 
   final ServiceAutentication _serviceAutentication;
 
-  ControllerSignUp(this._serviceAutentication);
+  ControllerConfig(this._serviceAutentication);
 
   bool get processing => _processing == Status.working;
   bool get hasMsg => _result != ActionResult.none;
@@ -34,4 +32,24 @@ class ControllerSignUp with ChangeNotifier {
     _username = val;
   }
 
+  update() async {
+    _processing = Status.working;
+    _msg = '';
+    _result = ActionResult.none;
+    notifyListeners();
+
+    String? ret = await _serviceAutentication.update(
+        email: _serviceAutentication.user!.email, name: _username);
+
+    if (ret != null) {
+      _msg = ret;
+      _result = ActionResult.error;
+    } else {
+      _msg = "Nome Alterado com sucesso!";
+      _result = ActionResult.success;
+    }
+
+    _processing = Status.done;
+    notifyListeners();
+  }
 }

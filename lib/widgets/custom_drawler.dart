@@ -29,7 +29,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     final _autenticationService =
-        Provider.of<ServiceAutentication>(context, listen: false);
+        Provider.of<ServiceAutentication>(context);
 
     return Drawer(
       child: Padding(

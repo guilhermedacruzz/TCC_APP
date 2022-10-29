@@ -129,6 +129,13 @@ class ServiceAutentication with ChangeNotifier {
       return "Erro ao trocar a senha!";
     }
 
+    final data = json.decode(response.body);
+
+    if(_user != null) {
+      _user!.email = data['email'];
+      _user!.name = data['name'];
+    }
+
     notifyListeners();
   }
 
