@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tcc/forms/custom_button.dart';
-import 'package:tcc/forms/custom_textformfield.dart';
+import 'package:tcc/widgets/forms/custom_button.dart';
+import 'package:tcc/widgets/forms/custom_textformfield.dart';
 
 class PageRegisterNewIOT extends StatelessWidget {
   static String routeName = "/register";

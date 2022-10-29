@@ -2,13 +2,13 @@ import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc/controller/controller_sign_up.dart';
-import 'package:tcc/forms/custom_button.dart';
-import 'package:tcc/forms/custom_textformfield.dart';
 import 'package:tcc/pages/autentication/login/page_recover_password.dart';
 import 'package:tcc/pages/autentication/login/page_sign_in.dart';
 import 'package:tcc/pages/autentication/login/page_sign_up.dart';
 import 'package:tcc/services/service_autentication.dart';
 import 'package:tcc/widgets/custom_text_button.dart';
+import 'package:tcc/widgets/forms/custom_button.dart';
+import 'package:tcc/widgets/forms/custom_textformfield.dart';
 
 class PageBase extends StatefulWidget {
   final String type;

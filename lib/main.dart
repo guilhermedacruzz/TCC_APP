@@ -12,7 +12,6 @@ import 'package:tcc/pages/page_splash.dart';
 import 'package:tcc/services/service_autentication.dart';
 import 'package:tcc/utils/style.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
