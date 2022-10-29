@@ -23,34 +23,27 @@ class _PageRecoverPageState extends State<PageRecoverPage>
   bool checkedValue = false;
   late ControllerSignUp _controller;
 
-  //chave utilizada para identificar o form.
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
 
-    //inicialização do controlador
     _controller = ControllerSignUp(
         Provider.of<ServiceAutentication>(context, listen: false));
 
-    //Para não precisar utilizar o AnimatedBuilder
-    //é possível escutar as modificações do
-    //controlador e atualizar o estado.
     _controller.addListener(() {
       setState(() {});
     });
-
-    _controller.setRegister(false);
   }
 
   execute() async {
     if (_formKey.currentState!.validate()) {
-      await _controller.execute();
+      await _controller.updatePassword();
 
       if (_controller.hasError) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(_controller.errorMsg),
+          content: Text(_controller.msg),
           backgroundColor: Theme.of(context).highlightColor,
         ));
       }
@@ -66,7 +59,6 @@ class _PageRecoverPageState extends State<PageRecoverPage>
       footerText: "Ainda não tem uma conta?",
       footerButtonText: "Criar Agora",
       footerAction: () {
-        _controller.setRegister(true);
         Navigator.of(context).pushNamed(PageSignUp.routeName);
       },
       child: Form(

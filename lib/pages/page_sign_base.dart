@@ -27,6 +27,7 @@ class PageBase extends StatefulWidget {
 }
 
 class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

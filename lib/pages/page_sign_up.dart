@@ -7,7 +7,6 @@ import '../forms/custom_button.dart';
 import '../forms/custom_textformfield.dart';
 import '../services/service_autentication.dart';
 import 'page_sign_base.dart';
-import 'page_sign_in.dart';
 
 class PageSignUp extends StatefulWidget {
   static String routeName = "/signup";
@@ -22,34 +21,27 @@ class _PageSignUpState extends State<PageSignUp> with TickerProviderStateMixin {
   bool hidePassword = true;
   late ControllerSignUp _controller;
 
-  //chave utilizada para identificar o form.
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
 
-    //inicialização do controlador
     _controller = ControllerSignUp(
         Provider.of<ServiceAutentication>(context, listen: false));
 
-    //Para não precisar utilizar o AnimatedBuilder
-    //é possível escutar as modificações do
-    //controlador e atualizar o estado.
     _controller.addListener(() {
       setState(() {});
     });
-
-    _controller.setRegister(true);
   }
 
   execute() async {
     if (_formKey.currentState!.validate()) {
-      await _controller.execute();
+      await _controller.signUp();
 
       if (_controller.hasError) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(_controller.errorMsg),
+          content: Text(_controller.msg),
           backgroundColor: Theme.of(context).highlightColor,
         ));
       }
@@ -65,7 +57,6 @@ class _PageSignUpState extends State<PageSignUp> with TickerProviderStateMixin {
       footerText: "Já têm uma conta cadastrada?",
       footerButtonText: "Entre Agora",
       footerAction: () {
-        _controller.setRegister(false);
         Navigator.of(context).pushNamed(PageSplash.routeName);
       },
       child: Form(

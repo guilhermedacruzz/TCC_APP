@@ -5,30 +5,25 @@ import '../utils/enums.dart';
 
 class ControllerSignUp with ChangeNotifier {
   String _username = '';
-  String _email = ''; // variavel que guarda o email
-  String _password = ''; // variavel que guarda a senha
-  String _confirmationPassword = ''; // variavel que guarda a senha da confirmação
-  bool _register = false;
+  String _email = '';
+  String _password = '';
+  String _confirmationPassword = '';
   Status _processing = Status.idle;
   ActionResult _result = ActionResult.none;
-  String? _errormsg;
+  String? _msg;
 
-  final ServiceAutentication
-      _serviceAutentication; // Carrega o objeto de autenticação
+  final ServiceAutentication _serviceAutentication;
 
   ControllerSignUp(this._serviceAutentication);
 
-  // Gets
   bool get processing => _processing == Status.working;
   bool get hasError => _result == ActionResult.error;
-  String get errorMsg => _errormsg ?? '';
+  String get msg => _msg ?? '';
 
   String get username => _username;
   String get email => _email;
   String get password => _password;
 
-
-  // Validação do email
   String? validateUsername(String? val) {
     if (val == null || val.isEmpty) {
       return "O Username não pode ser vazio";
@@ -39,7 +34,6 @@ class ControllerSignUp with ChangeNotifier {
     return null;
   }
 
-  // Validação do email
   String? validateEmail(String? val) {
     if (val == null || val.isEmpty) {
       return "E-mail não pode ser vazio";
@@ -50,7 +44,6 @@ class ControllerSignUp with ChangeNotifier {
     return null;
   }
 
-  // Validação da senha
   String? validatePassword(String? val) {
     if (val == null || val.isEmpty) {
       return "A Password não pode ser vazia";
@@ -61,7 +54,6 @@ class ControllerSignUp with ChangeNotifier {
     return null;
   }
 
-  // Validação da senhd de confirmação
   String? validateDifferentPassword(String? val) {
     if (_password != _confirmationPassword) {
       return "As Passwords não são iguais";
@@ -72,7 +64,7 @@ class ControllerSignUp with ChangeNotifier {
   setUsername(String val) {
     _username = val;
   }
-  // Setters
+
   setEmail(String val) {
     _email = val;
   }
@@ -85,31 +77,57 @@ class ControllerSignUp with ChangeNotifier {
     _confirmationPassword = val;
   }
 
-  setRegister(bool register) {
-    _register = register;
-  }
-
-  ///Invoca um dos métodos do serviço de autenticação
-  ///e processa o result.
-  execute() async {
+  signUp() async {
     _processing = Status.working;
-    _errormsg = '';
+    _msg = '';
     _result = ActionResult.none;
     notifyListeners();
 
-    String? ret;
-    if(_register) {
-      ret = await _serviceAutentication.singUp(_email, _password, _username);
-    }
-    else {
-      ret = await _serviceAutentication.singIn(_email, _password);
-    }
+    String? ret = await _serviceAutentication.singUp(_email, _password, _username);
 
     if (ret != null) {
-      _errormsg = ret;
+      _msg = ret;
       _result = ActionResult.error;
     }
 
+    _result = ActionResult.success;
+    _msg = "Usuário Criado com Sucesso!";
+    _processing = Status.done;
+    notifyListeners();
+  }
+
+  singIn() async {
+    _processing = Status.working;
+    _msg = '';
+    _result = ActionResult.none;
+    notifyListeners();
+
+    String? ret = await _serviceAutentication.singIn(_email, _password);
+
+    if (ret != null) {
+      _msg = ret;
+      _result = ActionResult.error;
+    }
+
+    _processing = Status.done;
+    notifyListeners();
+  }
+
+  updatePassword() async {
+    _processing = Status.working;
+    _msg = '';
+    _result = ActionResult.none;
+    notifyListeners();
+
+    String? ret = await _serviceAutentication.updatePassword(email, password);
+
+    if (ret != null) {
+      _msg = ret;
+      _result = ActionResult.error;
+    }
+
+    _result = ActionResult.success;
+    _msg = "Senha Alterada com sucesso!";
     _processing = Status.done;
     notifyListeners();
   }

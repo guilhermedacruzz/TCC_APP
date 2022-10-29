@@ -30,27 +30,22 @@ class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    //inicialização do controlador
     _controller = ControllerSignUp(
         Provider.of<ServiceAutentication>(context, listen: false));
 
-    //Para não precisar utilizar o AnimatedBuilder
-    //é possível escutar as modificações do
-    //controlador e atualizar o estado.
     _controller.addListener(() {
       setState(() {});
     });
 
-    _controller.setRegister(false);
   }
 
   execute() async {
     if (_formKey.currentState!.validate()) {
-      await _controller.execute();
+      await _controller.singIn();
 
       if (_controller.hasError) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(_controller.errorMsg),
+          content: Text(_controller.msg),
           backgroundColor: Theme.of(context).highlightColor,
         ));
       }
@@ -66,7 +61,6 @@ class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
       footerText: "Ainda não tem uma conta?",
       footerButtonText: "Criar Agora",
       footerAction: () {
-        _controller.setRegister(true);
         Navigator.of(context).pushNamed(PageSignUp.routeName);
       },
       child: Form(
