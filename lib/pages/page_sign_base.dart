@@ -68,7 +68,6 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
 
   execute() async {
     if (_formKey.currentState!.validate()) {
-      
       if (widget.type == PageSignIn.routeName) {
         await _controller.singIn();
       } else if (widget.type == PageSignUp.routeName) {
@@ -84,6 +83,8 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
             backgroundColor: Theme.of(context).highlightColor,
           ),
         );
+      } else {
+        widget.centerButtonAtion();
       }
     }
   }
@@ -200,10 +201,8 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
                                 obscureText: true,
                                 validator:
                                     _controller.validateDifferentPassword,
-                                onChanged: (value) {
-                                  _controller
-                                      .setConfirmationPassword(value ?? '');
-                                },
+                                onChanged: (value) => _controller
+                                    .setConfirmationPassword(value ?? ''),
                               ),
                             widget.extra ?? const SizedBox(height: 20),
                             _controller.processing
@@ -217,10 +216,7 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
                                         style:
                                             Theme.of(context).textTheme.button,
                                       ),
-                                      onAction: () {
-                                        execute();
-                                        widget.centerButtonAtion();
-                                      },
+                                      onAction: () => execute(),
                                     ),
                                   ),
                           ],
