@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tcc/pages/autentication/login/page_base.dart';
 import 'package:tcc/pages/page_splash.dart';
 import 'package:tcc/pages/autentication/welcome/page_welcome.dart';
-import 'page_base.dart';
 
 class PageSignUp extends StatefulWidget {
   static String routeName = "/signup";
@@ -13,7 +13,6 @@ class PageSignUp extends StatefulWidget {
 }
 
 class _PageSignUpState extends State<PageSignUp> with TickerProviderStateMixin {
-
   @override
   Widget build(BuildContext context) {
     return PageBase(

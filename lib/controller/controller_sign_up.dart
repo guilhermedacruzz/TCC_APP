@@ -1,9 +1,8 @@
-import 'dart:html';
-
 import 'package:flutter/foundation.dart';
+import 'package:tcc/services/service_autentication.dart';
+import 'package:tcc/utils/enums.dart';
 import 'package:validators/validators.dart';
-import '../services/service_autentication.dart';
-import '../utils/enums.dart';
+
 
 class ControllerSignUp with ChangeNotifier {
   String _username = '';

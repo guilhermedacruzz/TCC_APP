@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../pages/page_config.dart';
-import '../pages/autentication/login/page_sign_in.dart';
-import '../services/service_autentication.dart';
+import 'package:tcc/pages/page_config.dart';
+import 'package:tcc/services/service_autentication.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -15,7 +13,6 @@ class CustomDrawer extends StatefulWidget {
 class _CustomDrawerState extends State<CustomDrawer> {
   late AssetImage image;
   final String gif = "assets/images/anime.gif";
-  
 
   @override
   void initState() {
@@ -31,10 +28,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
   @override
   Widget build(BuildContext context) {
-
     final _autenticationService =
         Provider.of<ServiceAutentication>(context, listen: false);
-        
+
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 8),

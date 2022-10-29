@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../widgets/dark_mode_switch.dart';
+import 'package:tcc/widgets/dark_mode_switch.dart';
 
 class PageConfig extends StatelessWidget {
   static String routeName = "/config";

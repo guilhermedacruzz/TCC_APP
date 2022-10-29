@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import '../models/user.dart';
+import 'package:tcc/models/user.dart';
 
 class ServiceAutentication with ChangeNotifier {
   static const urlDominion = 'localhost:3000';
@@ -120,7 +120,7 @@ class ServiceAutentication with ChangeNotifier {
     if (response.statusCode == 400 || response.statusCode == 404) {
       return "Erro ao trocar a senha!";
     }
-    
+
     notifyListeners();
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tcc/pages/autentication/login/page_base.dart';
+import 'package:tcc/pages/autentication/login/page_sign_up.dart';
 import 'package:tcc/pages/page_splash.dart';
-import 'page_sign_up.dart';
-import 'page_base.dart';
 
 class PageRecoverPage extends StatefulWidget {
   static String routeName = "/recoverpassword";
@@ -12,7 +12,8 @@ class PageRecoverPage extends StatefulWidget {
   State<PageRecoverPage> createState() => _PageRecoverPageState();
 }
 
-class _PageRecoverPageState extends State<PageRecoverPage> with TickerProviderStateMixin {
+class _PageRecoverPageState extends State<PageRecoverPage>
+    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return PageBase(

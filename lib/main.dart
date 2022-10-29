@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tcc/notifiers/dark_theme_provider.dart';
 import 'package:tcc/pages/autentication/login/page_recover_password.dart';
+import 'package:tcc/pages/autentication/login/page_sign_in.dart';
+import 'package:tcc/pages/autentication/login/page_sign_up.dart';
+import 'package:tcc/pages/autentication/welcome/page_welcome.dart';
+import 'package:tcc/pages/page_config.dart';
+import 'package:tcc/pages/page_home.dart';
+import 'package:tcc/pages/page_register_new_IOT.dart';
 import 'package:tcc/pages/page_splash.dart';
-import 'notifiers/dark_theme_provider.dart';
-import 'pages/page_config.dart';
-import 'pages/page_home.dart';
-import 'pages/page_register_new_IOT.dart';
-import 'pages/autentication/login/page_sign_in.dart';
-import 'pages/autentication/login/page_sign_up.dart';
-import 'pages/autentication/welcome/page_welcome.dart';
-import 'services/service_autentication.dart';
-import 'utils/style.dart';
+import 'package:tcc/services/service_autentication.dart';
+import 'package:tcc/utils/style.dart';
+
 
 void main() {
   runApp(const MyApp());

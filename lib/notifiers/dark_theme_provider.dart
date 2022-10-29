@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
-
-import '../utils/dark_theme_preference.dart';
+import 'package:tcc/utils/dark_theme_preference.dart';
 
 class DarkThemeProvider with ChangeNotifier {
   DarkThemePreference darkThemePreference = DarkThemePreference();

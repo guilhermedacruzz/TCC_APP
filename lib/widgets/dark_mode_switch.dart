@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../notifiers/dark_theme_provider.dart';
+import 'package:tcc/notifiers/dark_theme_provider.dart';
 
 class SwitchDarkMode extends StatefulWidget {
   const SwitchDarkMode({Key? key}) : super(key: key);
@@ -24,8 +24,7 @@ class _SwitchDarkModeState extends State<SwitchDarkMode> {
       onPressed: () {
         _changeTheme();
       },
-      icon:
-          _value ? const Icon(Icons.dark_mode) : const Icon(Icons.light_mode),
+      icon: _value ? const Icon(Icons.dark_mode) : const Icon(Icons.light_mode),
     );
   }
 }

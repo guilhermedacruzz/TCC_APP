@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:tcc/forms/custom_button.dart';
+import 'package:tcc/pages/autentication/welcome/page_welcome_backgrounsd_images.dart';
 import 'package:tcc/pages/autentication/welcome/page_welcome_data.dart';
 import 'package:tcc/pages/page_splash.dart';
-import '../../../forms/custom_button.dart';
-import 'page_welcome_backgrounsd_images.dart';
 
 class PageWelcome extends StatefulWidget {
   static String routeName = "/welcome";
+
   const PageWelcome({super.key});
 
   @override
@@ -13,7 +14,6 @@ class PageWelcome extends StatefulWidget {
 }
 
 class _PageWelcomeState extends State<PageWelcome> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

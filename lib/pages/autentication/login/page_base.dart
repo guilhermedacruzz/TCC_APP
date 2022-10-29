@@ -1,14 +1,14 @@
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tcc/controller/controller_sign_up.dart';
+import 'package:tcc/forms/custom_button.dart';
+import 'package:tcc/forms/custom_textformfield.dart';
 import 'package:tcc/pages/autentication/login/page_recover_password.dart';
 import 'package:tcc/pages/autentication/login/page_sign_in.dart';
 import 'package:tcc/pages/autentication/login/page_sign_up.dart';
+import 'package:tcc/services/service_autentication.dart';
 import 'package:tcc/widgets/custom_text_button.dart';
-import '../../../controller/controller_sign_up.dart';
-import '../../../forms/custom_button.dart';
-import '../../../forms/custom_textformfield.dart';
-import '../../../services/service_autentication.dart';
 
 class PageBase extends StatefulWidget {
   final String type;
@@ -68,7 +68,6 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
 
   execute() async {
     if (_formKey.currentState!.validate()) {
-      
       bool status = false;
 
       if (widget.type == PageSignIn.routeName) {
@@ -88,10 +87,9 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
         );
       }
 
-      if(status) {
+      if (status) {
         widget.centerButtonAction();
       }
-    
     }
   }
 
