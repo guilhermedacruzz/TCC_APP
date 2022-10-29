@@ -17,7 +17,7 @@ class ControllerSignUp with ChangeNotifier {
   ControllerSignUp(this._serviceAutentication);
 
   bool get processing => _processing == Status.working;
-  bool get hasError => _result == ActionResult.error;
+  bool get hasMsg => _result != ActionResult.none;
   String get msg => _msg ?? '';
 
   String get username => _username;

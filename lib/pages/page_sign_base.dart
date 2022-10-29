@@ -1,22 +1,44 @@
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tcc/pages/page_recover_password.dart';
+import 'package:tcc/pages/page_sign_in.dart';
+import 'package:tcc/pages/page_sign_up.dart';
 import 'package:tcc/widgets/custom_text_button.dart';
+import '../controller/controller_sign_up.dart';
+import '../forms/custom_button.dart';
+import '../forms/custom_textformfield.dart';
+import '../services/service_autentication.dart';
 
 class PageBase extends StatefulWidget {
+  final String type;
   final String title1;
   final String title2;
   final String subtitle;
-  final Widget child;
+  final bool hasName;
+  final bool hasEmail;
+  final bool hasPassword;
+  final bool hasConfirmPassword;
+  final Widget? extra;
+  final String centerButtonText;
+  final Function centerButtonAtion;
   final String footerText;
   final Function footerAction;
   final String footerButtonText;
 
   const PageBase({
     super.key,
+    required this.type,
     required this.title1,
     required this.title2,
     required this.subtitle,
-    required this.child,
+    this.hasName = false,
+    this.hasEmail = false,
+    this.hasPassword = false,
+    this.hasConfirmPassword = false,
+    this.extra,
+    required this.centerButtonText,
+    required this.centerButtonAtion,
     required this.footerText,
     required this.footerAction,
     required this.footerButtonText,
@@ -27,7 +49,45 @@ class PageBase extends StatefulWidget {
 }
 
 class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
-  
+  bool hidePassword = true;
+  late ControllerSignUp _controller;
+
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = ControllerSignUp(
+        Provider.of<ServiceAutentication>(context, listen: false));
+
+    _controller.addListener(() {
+      setState(() {});
+    });
+  }
+
+  execute() async {
+    if (_formKey.currentState!.validate()) {
+      
+      if (widget.type == PageSignIn.routeName) {
+        await _controller.singIn();
+      } else if (widget.type == PageSignUp.routeName) {
+        await _controller.signUp();
+      } else if (widget.type == PageRecoverPage.routeName) {
+        await _controller.updatePassword();
+      }
+
+      if (_controller.hasMsg) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(_controller.msg),
+            backgroundColor: Theme.of(context).highlightColor,
+          ),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +149,83 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
                           ],
                         ),
                       ),
-                      widget.child,
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            if (widget.hasName)
+                              CustomTextFormField(
+                                label: "Username",
+                                hint: "Digite o seu username",
+                                validator: _controller.validateUsername,
+                                onChanged: (value) {
+                                  _controller.setUsername(value ?? '');
+                                },
+                              ),
+                            if (widget.hasEmail)
+                              CustomTextFormField(
+                                label: "Email",
+                                hint: "Digite o seu email",
+                                validator: _controller.validateEmail,
+                                onChanged: (value) {
+                                  _controller.setEmail(value ?? '');
+                                },
+                              ),
+                            if (widget.hasPassword)
+                              CustomTextFormField(
+                                label: 'Senha',
+                                hint: 'Digite a sua senha',
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    !hidePassword
+                                        ? Icons.remove_red_eye
+                                        : Icons.visibility_off,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      hidePassword = !hidePassword;
+                                    });
+                                  },
+                                ),
+                                obscureText: hidePassword,
+                                validator: _controller.validatePassword,
+                                onChanged: (value) {
+                                  _controller.setPassword(value ?? '');
+                                },
+                              ),
+                            if (widget.hasConfirmPassword)
+                              CustomTextFormField(
+                                label: 'Confirme sua senha',
+                                hint: 'Digite a sua senha',
+                                obscureText: true,
+                                validator:
+                                    _controller.validateDifferentPassword,
+                                onChanged: (value) {
+                                  _controller
+                                      .setConfirmationPassword(value ?? '');
+                                },
+                              ),
+                            widget.extra ?? const SizedBox(height: 20),
+                            _controller.processing
+                                ? const CircularProgressIndicator()
+                                : SizedBox(
+                                    width: double.infinity,
+                                    height: 45,
+                                    child: CustomButton(
+                                      widget: Text(
+                                        widget.centerButtonText,
+                                        style:
+                                            Theme.of(context).textTheme.button,
+                                      ),
+                                      onAction: () {
+                                        execute();
+                                        widget.centerButtonAtion();
+                                      },
+                                    ),
+                                  ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -111,7 +247,7 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
                           ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),
