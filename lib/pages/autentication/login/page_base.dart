@@ -75,7 +75,7 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
       } else if (widget.type == PageSignUp.routeName) {
         status = await _controller.signUp();
       } else if (widget.type == PageRecoverPage.routeName) {
-        status = await _controller.updatePassword();
+        status = await _controller.update();
       }
 
       if (_controller.hasMsg) {

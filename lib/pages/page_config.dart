@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/widgets/dark_mode_switch.dart';
-import 'package:tcc/widgets/forms/custom_button.dart';
 import 'package:tcc/widgets/forms/custom_textformfield.dart';
 
 class PageConfig extends StatelessWidget {

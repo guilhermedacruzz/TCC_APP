@@ -123,14 +123,14 @@ class ControllerSignUp with ChangeNotifier {
     return status;
   }
 
-  Future<bool> updatePassword() async {
+  Future<bool> update() async {
     bool status = false;
     _processing = Status.working;
     _msg = '';
     _result = ActionResult.none;
     notifyListeners();
 
-    String? ret = await _serviceAutentication.updatePassword(email, password);
+    String? ret = await _serviceAutentication.update(email:email, password: password);
 
     if (ret != null) {
       _msg = ret;

@@ -96,7 +96,12 @@ class ServiceAutentication with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<String?> updatePassword(String email, String password) async {
+  Future<String?> update({
+    required email,
+    password,
+    name,
+  }) async {
+
     final url = Uri.http(
       urlDominion,
       updateEndPoint,
@@ -104,8 +109,11 @@ class ServiceAutentication with ChangeNotifier {
 
     final body = {
       'email': email,
-      'password': password,
     };
+
+    body.addAll(
+      (password != null) ? {'password': password} : {'name': name},
+    );
 
     http.Response response;
     try {
