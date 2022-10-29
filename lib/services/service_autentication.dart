@@ -38,7 +38,7 @@ class ServiceAutentication with ChangeNotifier {
 
     final data = json.decode(response.body);
 
-    if (data['statusCode'] == 400) {
+    if (data['statusCode'] == 400 || response.statusCode == 404) {
       if (data['message'] == 'Email duplicate') {
         return 'E-mail já cadastrado';
       }
@@ -80,7 +80,7 @@ class ServiceAutentication with ChangeNotifier {
 
     final data = json.decode(response.body);
 
-    if (response.statusCode == 400) {
+    if (response.statusCode == 400 || response.statusCode == 404) {
       return "E-mail ou senha inválidos";
     }
 
@@ -121,6 +121,7 @@ class ServiceAutentication with ChangeNotifier {
       return "Erro ao trocar a senha!";
     }
     
+    notifyListeners();
   }
 
   logout() {

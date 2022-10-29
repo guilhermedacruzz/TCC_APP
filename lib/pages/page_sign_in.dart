@@ -54,7 +54,7 @@ class _PageSignInState extends State<PageSignIn> with TickerProviderStateMixin {
         ],
       ),
       centerButtonText: "Entrar",
-      centerButtonAtion: () {},
+      centerButtonAction: () {},
       footerText: "Ainda não tem uma conta?",
       footerButtonText: "Criar Agora",
       footerAction: () {

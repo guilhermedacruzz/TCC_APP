@@ -21,7 +21,7 @@ class PageBase extends StatefulWidget {
   final bool hasConfirmPassword;
   final Widget? extra;
   final String centerButtonText;
-  final Function centerButtonAtion;
+  final Function centerButtonAction;
   final String footerText;
   final Function footerAction;
   final String footerButtonText;
@@ -38,7 +38,7 @@ class PageBase extends StatefulWidget {
     this.hasConfirmPassword = false,
     this.extra,
     required this.centerButtonText,
-    required this.centerButtonAtion,
+    required this.centerButtonAction,
     required this.footerText,
     required this.footerAction,
     required this.footerButtonText,
@@ -68,12 +68,15 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
 
   execute() async {
     if (_formKey.currentState!.validate()) {
+      
+      bool status = false;
+
       if (widget.type == PageSignIn.routeName) {
-        await _controller.singIn();
+        status = await _controller.singIn();
       } else if (widget.type == PageSignUp.routeName) {
-        await _controller.signUp();
+        status = await _controller.signUp();
       } else if (widget.type == PageRecoverPage.routeName) {
-        await _controller.updatePassword();
+        status = await _controller.updatePassword();
       }
 
       if (_controller.hasMsg) {
@@ -83,9 +86,12 @@ class _PageBaseState extends State<PageBase> with TickerProviderStateMixin {
             backgroundColor: Theme.of(context).highlightColor,
           ),
         );
-      } else {
-        widget.centerButtonAtion();
       }
+
+      if(status) {
+        widget.centerButtonAction();
+      }
+    
     }
   }
 

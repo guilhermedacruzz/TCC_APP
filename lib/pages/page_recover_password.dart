@@ -25,7 +25,7 @@ class _PageRecoverPageState extends State<PageRecoverPage> with TickerProviderSt
       hasPassword: true,
       hasConfirmPassword: true,
       centerButtonText: "Mudar",
-      centerButtonAtion: () {
+      centerButtonAction: () {
         Navigator.of(context).pushNamed(PageSplash.routeName);
       },
       footerText: "Ainda não tem uma conta?",

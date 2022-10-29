@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/foundation.dart';
 import 'package:validators/validators.dart';
 import '../services/service_autentication.dart';
@@ -77,26 +79,32 @@ class ControllerSignUp with ChangeNotifier {
     _confirmationPassword = val;
   }
 
-  signUp() async {
+  Future<bool> signUp() async {
+    bool status = false;
     _processing = Status.working;
     _msg = '';
     _result = ActionResult.none;
     notifyListeners();
 
-    String? ret = await _serviceAutentication.singUp(_email, _password, _username);
+    String? ret =
+        await _serviceAutentication.singUp(_email, _password, _username);
 
     if (ret != null) {
       _msg = ret;
       _result = ActionResult.error;
+    } else {
+      _result = ActionResult.success;
+      _msg = "Usuário Criado com Sucesso!";
+      status = true;
     }
 
-    _result = ActionResult.success;
-    _msg = "Usuário Criado com Sucesso!";
     _processing = Status.done;
     notifyListeners();
+    return status;
   }
 
-  singIn() async {
+  Future<bool> singIn() async {
+    bool status = false;
     _processing = Status.working;
     _msg = '';
     _result = ActionResult.none;
@@ -107,13 +115,17 @@ class ControllerSignUp with ChangeNotifier {
     if (ret != null) {
       _msg = ret;
       _result = ActionResult.error;
+    } else {
+      status = true;
     }
 
     _processing = Status.done;
     notifyListeners();
+    return status;
   }
 
-  updatePassword() async {
+  Future<bool> updatePassword() async {
+    bool status = false;
     _processing = Status.working;
     _msg = '';
     _result = ActionResult.none;
@@ -124,11 +136,14 @@ class ControllerSignUp with ChangeNotifier {
     if (ret != null) {
       _msg = ret;
       _result = ActionResult.error;
+    } else {
+      _msg = "Senha Alterada com sucesso!";
+      _result = ActionResult.success;
+      status = true;
     }
 
-    _result = ActionResult.success;
-    _msg = "Senha Alterada com sucesso!";
     _processing = Status.done;
     notifyListeners();
+    return status;
   }
 }

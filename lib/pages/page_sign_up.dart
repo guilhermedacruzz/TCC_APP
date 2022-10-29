@@ -26,7 +26,7 @@ class _PageSignUpState extends State<PageSignUp> with TickerProviderStateMixin {
       hasPassword: true,
       hasConfirmPassword: true,
       centerButtonText: "Criar",
-      centerButtonAtion: () {
+      centerButtonAction: () {
         Navigator.of(context).pushNamed(PageWelcome.routeName);
       },
       footerText: "Já têm uma conta cadastrada?",
