@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tcc/pages/autentication/welcome/page_welcome_data.dart';
 import 'package:tcc/pages/page_splash.dart';
-import '../../forms/custom_button.dart';
-import 'welcome_backgrounsd_images.dart';
+import '../../../forms/custom_button.dart';
+import 'page_welcome_backgrounsd_images.dart';
 
 class PageWelcome extends StatefulWidget {
   static String routeName = "/welcome";
@@ -12,11 +13,6 @@ class PageWelcome extends StatefulWidget {
 }
 
 class _PageWelcomeState extends State<PageWelcome> {
-  List images = [
-    "assets/images/welcome/1.jpg",
-    "assets/images/welcome/2.jpg",
-    "assets/images/welcome/3.jpg",
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +20,15 @@ class _PageWelcomeState extends State<PageWelcome> {
       backgroundColor: Theme.of(context).backgroundColor,
       body: PageView.builder(
         scrollDirection: Axis.vertical,
-        itemCount: images.length,
+        itemCount: pageWelcomeData.length,
         itemBuilder: (_, index) {
           return Container(
             width: double.maxFinite,
             height: double.maxFinite,
             margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 40),
             padding: const EdgeInsets.only(top: 120, right: 20, left: 20),
-            child: WelcomeBackgroundImage(
-              src: images[index],
+            child: PageWelcomeBackgroundImage(
+              src: pageWelcomeData[index]["src"],
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -40,18 +36,18 @@ class _PageWelcomeState extends State<PageWelcome> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Trips",
+                        pageWelcomeData[index]["title"],
                         style: Theme.of(context).textTheme.headline4,
                       ),
                       Text(
-                        "Trips",
+                        pageWelcomeData[index]["subtitle"],
                         style: Theme.of(context).textTheme.subtitle1,
                       ),
                       const SizedBox(height: 20),
                       SizedBox(
                         width: 250,
                         child: Text(
-                          "Mountain hikes give you an incredible sense of freedom along with endurance tests",
+                          pageWelcomeData[index]["text"],
                           style: Theme.of(context).textTheme.bodyText1,
                         ),
                       ),
@@ -61,7 +57,7 @@ class _PageWelcomeState extends State<PageWelcome> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       ...List.generate(
-                        images.length,
+                        pageWelcomeData.length,
                         (indexDots) {
                           return Container(
                             margin: const EdgeInsets.only(bottom: 2),
@@ -79,7 +75,7 @@ class _PageWelcomeState extends State<PageWelcome> {
                         },
                       ),
                       const Spacer(),
-                      if (index == images.length - 1)
+                      if (index == pageWelcomeData.length - 1)
                         Padding(
                           padding: const EdgeInsets.only(bottom: 40),
                           child: Row(

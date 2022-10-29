@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class WelcomeBackgroundImage extends StatelessWidget {
+class PageWelcomeBackgroundImage extends StatelessWidget {
   final Widget child;
   final String src;
 
-  const WelcomeBackgroundImage({
+  const PageWelcomeBackgroundImage({
     super.key,
     required this.child,
     required this.src,
