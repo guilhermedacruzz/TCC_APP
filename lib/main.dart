@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tcc/pages/page_recover_password.dart';
+import 'package:tcc/pages/autentication/page_recover_password.dart';
 import 'package:tcc/pages/page_splash.dart';
 import 'notifiers/dark_theme_provider.dart';
 import 'pages/page_config.dart';
 import 'pages/page_home.dart';
 import 'pages/page_register_new_IOT.dart';
-import 'pages/page_sign_in.dart';
-import 'pages/page_sign_up.dart';
-import 'pages/page_welcome.dart';
+import 'pages/autentication/page_sign_in.dart';
+import 'pages/autentication/page_sign_up.dart';
+import 'pages/autentication/page_welcome.dart';
 import 'services/service_autentication.dart';
 import 'utils/style.dart';
 
@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: "SAPA",
             debugShowCheckedModeBanner: false,
-            initialRoute: PageRecoverPage.routeName,
+            initialRoute: PageWelcome.routeName,
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             routes: {
               PageRegisterNewIOT.routeName: (context) =>

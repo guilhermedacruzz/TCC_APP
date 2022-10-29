@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../pages/page_config.dart';
-import '../pages/page_sign_in.dart';
+import '../pages/autentication/page_sign_in.dart';
 import '../services/service_autentication.dart';
 
 class CustomDrawer extends StatefulWidget {

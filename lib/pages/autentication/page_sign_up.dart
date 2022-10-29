@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/pages/page_splash.dart';
-import 'package:tcc/pages/page_welcome.dart';
-import 'page_sign_base.dart';
+import 'package:tcc/pages/autentication/page_welcome.dart';
+import 'page_base.dart';
 
 class PageSignUp extends StatefulWidget {
   static String routeName = "/signup";

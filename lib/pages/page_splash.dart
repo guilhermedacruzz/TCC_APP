@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tcc/pages/page_sign_in.dart';
+import 'package:tcc/pages/autentication/page_sign_in.dart';
 
 import '../services/service_autentication.dart';
 import 'page_home.dart';

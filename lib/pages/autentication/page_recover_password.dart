@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/pages/page_splash.dart';
 import 'page_sign_up.dart';
-import 'page_sign_base.dart';
+import 'page_base.dart';
 
 class PageRecoverPage extends StatefulWidget {
   static String routeName = "/recoverpassword";
