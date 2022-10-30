@@ -25,7 +25,6 @@ class _PageWelcomeState extends State<PageWelcome> {
           return Container(
             width: double.maxFinite,
             height: double.maxFinite,
-            margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 40),
             padding: const EdgeInsets.only(top: 120, right: 20, left: 20),
             child: PageWelcomeBackgroundImage(
               src: pageWelcomeData[index]["src"],
@@ -51,6 +50,25 @@ class _PageWelcomeState extends State<PageWelcome> {
                           style: Theme.of(context).textTheme.bodyText1,
                         ),
                       ),
+                      const Spacer(),
+                      if (index == pageWelcomeData.length - 1)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 40),
+                          child: SizedBox(
+                            width: 120,
+                            height: 45,
+                            child: CustomButton(
+                              widget: Text(
+                                "Começar",
+                                style: Theme.of(context).textTheme.button,
+                              ),
+                              onAction: () {
+                                Navigator.of(context)
+                                    .pushNamed(PageSplash.routeName);
+                              },
+                            ),
+                          ),
+                        ),
                     ],
                   ),
                   Column(
@@ -74,30 +92,6 @@ class _PageWelcomeState extends State<PageWelcome> {
                           );
                         },
                       ),
-                      const Spacer(),
-                      if (index == pageWelcomeData.length - 1)
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 40),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              SizedBox(
-                                width: 120,
-                                height: 45,
-                                child: CustomButton(
-                                  widget: Text(
-                                    "Começar",
-                                    style: Theme.of(context).textTheme.button,
-                                  ),
-                                  onAction: () {
-                                    Navigator.of(context)
-                                        .pushNamed(PageSplash.routeName);
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
                     ],
                   ),
                 ],

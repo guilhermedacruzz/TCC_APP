@@ -16,8 +16,8 @@ class PageWelcomeBackgroundImage extends StatelessWidget {
     return Stack(
       children: [
         Positioned(
-          bottom: 40,
-          left: (size.width / 2) - 240,
+          bottom: 120,
+          left: 30,
           child: Image.asset(
             src,   
             fit: BoxFit.cover,

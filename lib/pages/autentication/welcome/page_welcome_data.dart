@@ -3,7 +3,7 @@ List pageWelcomeData = [
     "title": "Título 1",
     "subtitle": "subtítulo 1",
     "text": "textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto",
-    "src":"assets/images/welcome/1.jpg",
+    "src":"assets/images/welcome/teste.png",
   },
   {
     "title": "Título 2",
