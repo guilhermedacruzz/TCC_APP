@@ -28,7 +28,7 @@ class _PageSignUpState extends State<PageSignUp> with TickerProviderStateMixin {
       centerButtonAction: () {
         Navigator.of(context).pushNamed(PageWelcome.routeName);
       },
-      footerText: "Já têm uma conta cadastrada?",
+      footerText: "Já têm uma conta ?",
       footerButtonText: "Entre Agora",
       footerAction: () {
         Navigator.of(context).pushNamed(PageSplash.routeName);
