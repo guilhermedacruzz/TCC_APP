@@ -68,9 +68,10 @@ class _PageWelcomeState extends State<PageWelcome> {
                                   },
                                 ),
                               )
-                            : const Icon(
+                            : Icon(
                                 Icons.arrow_downward,
                                 size: 35,
+                                color: Theme.of(context).indicatorColor,
                               ),
                       ),
                     ],
