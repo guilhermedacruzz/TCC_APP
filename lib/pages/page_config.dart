@@ -90,7 +90,7 @@ class _PageConfigState extends State<PageConfig> {
                           ),
                         ),
                         IconButton(
-                          icon: const Icon(Icons.change_circle),
+                          icon: const Icon(Icons.restart_alt),
                           onPressed: () => execute(),
                         ),
                       ],

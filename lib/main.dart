@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: "SAPA",
             debugShowCheckedModeBanner: false,
-            initialRoute: PageWelcome.routeName,
+            initialRoute: PageSplash.routeName,
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             routes: {
               PageRegisterNewIOT.routeName: (context) =>

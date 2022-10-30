@@ -1,20 +1,20 @@
 List pageWelcomeData = [
   {
-    "title": "Título 1",
-    "subtitle": "subtítulo 1",
-    "text": "textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto",
-    "src":"assets/images/welcome/1.png",
+    "title": "Aumente a sua proteção",
+    "subtitle": "by Cruz",
+    "text": "Com o nosso sistema, sua residência se tornará muito mais segura.",
+    "src":"assets/images/welcome/welcome_image_1.png",
   },
   {
-    "title": "Título 2",
-    "subtitle": "subtítulo 2",
-    "text": "textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto",
-    "src":"assets/images/welcome/2.png",
+    "title": "Totalmente Personalizável",
+    "subtitle": "by Cruz",
+    "text": "Você pode escolher as configurações do seu dispositivo IOT.",
+    "src":"assets/images/welcome/welcome_image_2.png",
   },
   {
-    "title": "Título 3",
-    "subtitle": "subtítulo 3",
-    "text": "textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto",
-    "src":"assets/images/welcome/3.png",
+    "title": "Vamos Lá",
+    "subtitle": "by Cruz",
+    "text": "Vamos lá, o seu aplicativo já está pronto para o uso.",
+    "src":"assets/images/welcome/welcome_image_3.png",
   },
 ];
