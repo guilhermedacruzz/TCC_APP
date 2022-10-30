@@ -51,24 +51,28 @@ class _PageWelcomeState extends State<PageWelcome> {
                         ),
                       ),
                       const Spacer(),
-                      if (index == pageWelcomeData.length - 1)
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 40),
-                          child: SizedBox(
-                            width: 120,
-                            height: 45,
-                            child: CustomButton(
-                              widget: Text(
-                                "Começar",
-                                style: Theme.of(context).textTheme.button,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 40),
+                        child: (index == pageWelcomeData.length - 1)
+                            ? SizedBox(
+                                width: 120,
+                                height: 45,
+                                child: CustomButton(
+                                  widget: Text(
+                                    "Começar",
+                                    style: Theme.of(context).textTheme.button,
+                                  ),
+                                  onAction: () {
+                                    Navigator.of(context)
+                                        .pushNamed(PageSplash.routeName);
+                                  },
+                                ),
+                              )
+                            : const Icon(
+                                Icons.arrow_downward,
+                                size: 35,
                               ),
-                              onAction: () {
-                                Navigator.of(context)
-                                    .pushNamed(PageSplash.routeName);
-                              },
-                            ),
-                          ),
-                        ),
+                      ),
                     ],
                   ),
                   Column(
