@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tcc/controller/controller_iot.dart';
 import 'package:tcc/pages/page_register_new_IOT.dart';
+import 'package:tcc/services/service_autentication.dart';
+import 'package:tcc/services/service_iot.dart';
 import 'package:tcc/widgets/custom_drawler.dart';
 import 'package:tcc/widgets/custom_iot_viewer.dart';
 import 'package:tcc/widgets/trash/grafics.dart';
@@ -15,6 +19,20 @@ class PageHome extends StatefulWidget {
 
 class _PageHomeState extends State<PageHome> {
   bool toggle = false;
+  late ControllerIot _controllerIot;
+
+  @override
+  void initState() {
+    super.initState();
+
+    final autenticationService = Provider.of<ServiceAutentication>(context, listen: false);
+
+    final serviceIot = Provider.of<ServiceIot>(context, listen: false);
+
+    _controllerIot = ControllerIot(serviceIot);
+
+    _controllerIot.getIots(autenticationService.user!.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +75,7 @@ class _PageHomeState extends State<PageHome> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const CustomIotViewer(),
+              //const CustomIotViewer(),
               const SizedBox(height: 15),
               Container(
                 padding: const EdgeInsets.all(15),
