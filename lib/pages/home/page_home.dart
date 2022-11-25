@@ -39,9 +39,7 @@ class _PageHomeState extends State<PageHome> {
             children: [
               !_repositoryIot.hasData
                   ? const CircularProgressIndicator()
-                  : CustomIotViewer(
-                      iots: _repositoryIot.iots,
-                    ),
+                  : CustomIotViewer(),
               const SizedBox(height: 15),
               Container(
                 padding: const EdgeInsets.all(15),

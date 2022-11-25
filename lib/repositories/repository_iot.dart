@@ -12,6 +12,7 @@ class RepositoryIot with ChangeNotifier {
   static const getIotsEndPoint = "/iots";
 
   final List<Iot> _list = [];
+  int _currentIot = 0;
 
   final ServiceAutentication _serviceAutentication;
 
@@ -24,6 +25,12 @@ class RepositoryIot with ChangeNotifier {
   bool get hasData => _statusData == DataStatus.loaded;
 
   RepositoryIot(this._serviceAutentication);
+
+  int get currentIot => _currentIot;
+
+  void setCurrentIot(int newIot) {
+    _currentIot = newIot;
+  }
 
   List<Iot> get iots {
     return UnmodifiableListView(_list);
