@@ -25,7 +25,8 @@ class _PageHomeState extends State<PageHome> {
   void initState() {
     super.initState();
 
-    final autenticationService = Provider.of<ServiceAutentication>(context, listen: false);
+    final autenticationService =
+        Provider.of<ServiceAutentication>(context, listen: false);
 
     final serviceIot = Provider.of<ServiceIot>(context, listen: false);
 
@@ -75,7 +76,11 @@ class _PageHomeState extends State<PageHome> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              //const CustomIotViewer(),
+              _controllerIot.hasData
+                  ? const CircularProgressIndicator()
+                  : CustomIotViewer(
+                      iots: _controllerIot.iots,
+                    ),
               const SizedBox(height: 15),
               Container(
                 padding: const EdgeInsets.all(15),

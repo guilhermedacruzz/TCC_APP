@@ -14,6 +14,8 @@ class ControllerIot with ChangeNotifier {
 
   bool get processing => _processing == Status.working;
 
+  bool get hasData => iots != [];
+
   getIots(String user_id) async {
     _processing = Status.working;
     notifyListeners();

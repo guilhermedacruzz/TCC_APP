@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:tcc/models/iot.dart';
-import 'package:tcc/utils/enums.dart';
 
 class ServiceIot with ChangeNotifier {
   static const urlDominion = 'localhost:3000';
