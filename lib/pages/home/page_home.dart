@@ -30,7 +30,7 @@ class _PageHomeState extends State<PageHome> {
 
     return Scaffold(
       drawer: const CustomDrawer(),
-      appBar: const CustomHomeAppBar() as PreferredSizeWidget,
+      appBar: CustomHomeAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: SingleChildScrollView(

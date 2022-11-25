@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/pages/home/appbar/page_register_new_IOT.dart';
 
-class CustomHomeAppBar extends StatelessWidget {
-  const CustomHomeAppBar({super.key});
+class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+  CustomHomeAppBar({Key? key})
+      : preferredSize = Size.fromHeight(kToolbarHeight),
+        super(key: key);
+
+  @override
+  final Size preferredSize; // default is 56.0
 
   @override
   Widget build(BuildContext context) {
