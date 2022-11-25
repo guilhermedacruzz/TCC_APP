@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Styles {
+class CustomTheme {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
       textTheme: TextTheme(

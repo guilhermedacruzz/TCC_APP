@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tcc/notifiers/dark_theme_provider.dart';
 import 'package:tcc/pages/autentication/login/page_recover_password.dart';
 import 'package:tcc/pages/autentication/login/page_sign_in.dart';
 import 'package:tcc/pages/autentication/login/page_sign_up.dart';
@@ -11,8 +10,8 @@ import 'package:tcc/pages/home/appbar/page_register_new_IOT.dart';
 import 'package:tcc/pages/page_splash.dart';
 import 'package:tcc/repository/repository_iot.dart';
 import 'package:tcc/services/service_autentication.dart';
-import 'package:tcc/test/test_service_iot.dart';
-import 'package:tcc/utils/style.dart';
+import 'package:tcc/utils/notifiers/provider_dark_theme.dart';
+import 'package:tcc/utils/style/style_custom_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +25,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  DarkThemeProvider themeChangeProvider = DarkThemeProvider();
+  ProviderDarkTheme providerDarkTheme = ProviderDarkTheme();
 
   @override
   void initState() {
@@ -35,8 +34,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   void getCurrentAppTheme() async {
-    themeChangeProvider.darkTheme =
-        await themeChangeProvider.darkThemePreference.getTheme();
+    providerDarkTheme.darkTheme =
+        await providerDarkTheme.preferenceDarkTheme.getTheme();
   }
 
   @override
@@ -45,7 +44,7 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(
           create: (_) {
-            return themeChangeProvider;
+            return providerDarkTheme;
           },
         ),
         ChangeNotifierProvider(
@@ -58,13 +57,13 @@ class _MyAppState extends State<MyApp> {
               RepositoryIot(serviceAutentication),
         ),
       ],
-      child: Consumer<DarkThemeProvider>(
+      child: Consumer<ProviderDarkTheme>(
         builder: (BuildContext contex, value, Widget? child) {
           return MaterialApp(
             title: "SAPA",
             debugShowCheckedModeBanner: false,
             initialRoute: PageSplash.routeName,
-            theme: Styles.themeData(themeChangeProvider.darkTheme, context),
+            theme: CustomTheme.themeData(providerDarkTheme.darkTheme, context),
             routes: {
               PageRegisterNewIOT.routeName: (context) =>
                   const PageRegisterNewIOT(),

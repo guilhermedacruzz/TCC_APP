@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/services/service_autentication.dart';
-import 'package:tcc/utils/enums.dart';
+import 'package:tcc/utils/enums/enums.dart';
 
 class ControllerConfig with ChangeNotifier {
   String _username = '';

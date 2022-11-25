@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:tcc/models/iot.dart';
 import 'package:http/http.dart' as http;
 import 'package:tcc/services/service_autentication.dart';
-import 'package:tcc/utils/enums.dart';
+import 'package:tcc/utils/enums/enums.dart';
 
 class RepositoryIot with ChangeNotifier {
   static const urlDominion = 'localhost:3000';

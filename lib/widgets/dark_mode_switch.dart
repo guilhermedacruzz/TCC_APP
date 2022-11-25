@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tcc/notifiers/dark_theme_provider.dart';
+import 'package:tcc/utils/notifiers/provider_dark_theme.dart';
 
 class SwitchDarkMode extends StatefulWidget {
   const SwitchDarkMode({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class SwitchDarkMode extends StatefulWidget {
 class _SwitchDarkModeState extends State<SwitchDarkMode> {
   @override
   Widget build(BuildContext context) {
-    final themeChange = Provider.of<DarkThemeProvider>(context);
+    final themeChange = Provider.of<ProviderDarkTheme>(context);
     bool _value = themeChange.darkTheme;
 
     _changeTheme() {
