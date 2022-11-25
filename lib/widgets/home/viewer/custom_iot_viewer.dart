@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tcc/models/iot.dart';
 import 'package:tcc/repositories/repository_iot.dart';
 import 'package:tcc/widgets/home/viewer/custom_tile.dart';
 
@@ -16,37 +17,36 @@ class _CustomIotViewerState extends State<CustomIotViewer> {
   @override
   Widget build(BuildContext context) {
     final _repositoryIot = Provider.of<RepositoryIot>(context);
+    Size size = MediaQuery.of(context).size;
 
     return Card(
-      child: Theme(
-        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-        child: ExpansionTile(
-          iconColor: Theme.of(context).highlightColor,
-          collapsedIconColor: Theme.of(context).highlightColor,
-          title: CustomTile(
-            isSelected: true,
-            iot: _repositoryIot.iots[_repositoryIot.currentIot],
-          ),
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Column(
-                children: [
-                  for (var i = 0; i < _repositoryIot.iots.length; i++)
-                    if (i != _repositoryIot.currentIot)
-                      GestureDetector(
+      child: DropdownButtonHideUnderline(
+        child: ButtonTheme(
+          alignedDropdown: true,
+          child: SizedBox(
+            width: size.width * 0.75,
+            height: 80,
+            child: DropdownButton(
+              isExpanded: true,
+              value: _repositoryIot.iots[_repositoryIot.currentIot].id,
+              items: _repositoryIot.iots
+                  .map(
+                    (type) => DropdownMenuItem(
+                      value: type.id,
+                      child: Container(
+                        margin: const EdgeInsets.all(3),
+                        alignment: Alignment.center,
                         child: CustomTile(
+                          iot: type,
                           isSelected: false,
-                          iot: _repositoryIot.iots[i],
                         ),
-                        onTap: () {
-                          _repositoryIot.setCurrentIot(i);
-                        },
                       ),
-                ],
-              ),
+                    ),
+                  )
+                  .toList(),
+              onChanged: (type) {},
             ),
-          ],
+          ),
         ),
       ),
     );
