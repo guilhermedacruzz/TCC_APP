@@ -30,6 +30,7 @@ class RepositoryIot with ChangeNotifier {
 
   void setCurrentIot(Iot newIot) {
     _currentIot = newIot;
+    notifyListeners();
   }
 
   List<Iot> get iots {
