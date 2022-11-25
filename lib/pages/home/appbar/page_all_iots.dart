@@ -32,7 +32,7 @@ class PageAllIots extends StatelessWidget {
                     children: [
                       Text("Nome: ${iot.name}"),
                       Text("Descrição: ${iot.description}"),
-                      Text("Timer: ${iot.name} minutos"),
+                      Text("Timer: ${iot.timer} minutos"),
                     ],
                   ),
                 ),
