@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tcc/pages/home/appbar/page_all_iots.dart';
 import 'package:tcc/pages/home/appbar/page_config.dart';
+import 'package:tcc/pages/home/page_home.dart';
 import 'package:tcc/services/service_autentication.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -63,13 +65,19 @@ class _CustomDrawerState extends State<CustomDrawer> {
               style: Theme.of(context).textTheme.subtitle2,
             ),
             const Divider(height: 30),
-            const ListTile(
-              leading: Icon(Icons.home),
-              title: Text("Home"),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text("Home"),
+              onTap: () {
+                Navigator.of(context).pushNamed(PageHome.routeName);
+              },
             ),
-            const ListTile(
-              leading: Icon(Icons.mobile_friendly),
-              title: Text("Meus dispositivos"),
+            ListTile(
+              leading: const Icon(Icons.mobile_friendly),
+              title: const Text("Meus dispositivos"),
+              onTap: () {
+                Navigator.of(context).pushNamed(PageAllIots.routeName);
+              },
             ),
             ListTile(
               leading: const Icon(Icons.settings),

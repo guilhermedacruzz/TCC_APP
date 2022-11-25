@@ -52,9 +52,7 @@ class RepositoryIot with ChangeNotifier {
       final response = await http.get(_getApiEndPoint());
 
       if (response.statusCode == 200) {
-        
         final list = json.decode(response.body) as List;
-
         final iots = <Iot>[];
 
         for (var i = 0; i < list.length; i++) {

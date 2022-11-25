@@ -33,44 +33,47 @@ class _PageHomeState extends State<PageHome> {
       appBar: CustomHomeAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: _repositoryIot.hasData
-                ? [
-                    const CustomIotViewer(),
-                    const SizedBox(height: 15),
-                    Container(
-                      padding: const EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: IconButton(
-                        color: Theme.of(context).backgroundColor,
-                        iconSize:
-                            Theme.of(context).textTheme.headline1?.fontSize,
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.power_settings_new,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: _repositoryIot.hasData
+                  ? [
+                      const CustomIotViewer(),
+                      const SizedBox(height: 15),
+                      Container(
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child: IconButton(
+                          color: Theme.of(context).backgroundColor,
+                          iconSize:
+                              Theme.of(context).textTheme.headline1?.fontSize,
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.power_settings_new,
+                          ),
                         ),
                       ),
-                    ),
-                    Text(
-                      _repositoryIot.currentIot.name,
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                    const SizedBox(height: 15),
-                    const GraficsTeste(),
-                  ]
-                : [
-                    const CircularProgressIndicator(),
-                    Text(
-                      "Carregando.....",
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                  ],
+                      Text(
+                        _repositoryIot.currentIot.name,
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
+                      const SizedBox(height: 15),
+                      const GraficsTeste(),
+                    ]
+                  : [
+                      const CircularProgressIndicator(),
+                      const SizedBox(height: 15),
+                      Text(
+                        "Não encontramos seus dispositivos ",
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                    ],
+            ),
           ),
         ),
       ),

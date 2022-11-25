@@ -4,6 +4,7 @@ import 'package:tcc/pages/autentication/login/page_recover_password.dart';
 import 'package:tcc/pages/autentication/login/page_sign_in.dart';
 import 'package:tcc/pages/autentication/login/page_sign_up.dart';
 import 'package:tcc/pages/autentication/welcome/page_welcome.dart';
+import 'package:tcc/pages/home/appbar/page_all_iots.dart';
 import 'package:tcc/pages/home/appbar/page_config.dart';
 import 'package:tcc/pages/home/page_home.dart';
 import 'package:tcc/pages/home/appbar/page_register_new_IOT.dart';
@@ -74,6 +75,7 @@ class _MyAppState extends State<MyApp> {
               PageRecoverPage.routeName: (context) => const PageRecoverPage(),
               PageSplash.routeName: (context) => const PageSplash(),
               PageWelcome.routeName: (context) => const PageWelcome(),
+              PageAllIots.routeName: (context) => const PageAllIots(),
             },
           );
         },
