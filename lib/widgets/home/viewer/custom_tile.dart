@@ -31,9 +31,10 @@ class CustomTile extends StatelessWidget {
         iot.name,
         style: Theme.of(context).textTheme.headline6,
       ),
-      subtitle: DefaultTextStyle(
+      trailing: DefaultTextStyle(
         style: Theme.of(context).textTheme.bodyText2 as TextStyle,
-        child: Row(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             Text("Fechado"),
             SizedBox(width: 20),

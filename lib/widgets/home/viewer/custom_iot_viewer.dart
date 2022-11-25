@@ -25,7 +25,7 @@ class _CustomIotViewerState extends State<CustomIotViewer> {
           alignedDropdown: true,
           child: SizedBox(
             width: size.width * 0.75,
-            height: 80,
+            height: 70,
             child: DropdownButton(
               isExpanded: true,
               value: _repositoryIot.iots[_repositoryIot.currentIot].id,
@@ -34,7 +34,6 @@ class _CustomIotViewerState extends State<CustomIotViewer> {
                     (type) => DropdownMenuItem(
                       value: type.id,
                       child: Container(
-                        margin: const EdgeInsets.all(3),
                         alignment: Alignment.center,
                         child: CustomTile(
                           iot: type,
