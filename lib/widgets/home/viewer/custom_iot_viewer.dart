@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tcc/widgets/listTile/custom_tile.dart';
-
-import '../models/iot.dart';
+import 'package:tcc/models/iot.dart';
+import 'package:tcc/widgets/home/viewer/custom_tile.dart';
 
 class CustomIotViewer extends StatelessWidget {
   final List<Iot> iots;

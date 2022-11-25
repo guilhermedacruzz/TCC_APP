@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tcc/pages/autentication/login/page_base.dart';
 import 'package:tcc/pages/autentication/login/page_recover_password.dart';
 import 'package:tcc/pages/autentication/login/page_sign_up.dart';
-import 'package:tcc/widgets/custom_text_button.dart';
+import 'package:tcc/widgets/forms/custom_text_button.dart';
 
 class PageSignIn extends StatefulWidget {
   static String routeName = "/signin";
