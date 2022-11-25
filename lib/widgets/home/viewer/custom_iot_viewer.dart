@@ -41,7 +41,6 @@ class _CustomIotViewerState extends State<CustomIotViewer> {
                         ),
                         onTap: () {
                           _repositoryIot.setCurrentIot(i);
-                          print(_repositoryIot.currentIot);
                         },
                       ),
                 ],
