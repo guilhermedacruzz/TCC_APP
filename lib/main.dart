@@ -8,7 +8,7 @@ import 'package:tcc/pages/home/appbar/page_config.dart';
 import 'package:tcc/pages/home/page_home.dart';
 import 'package:tcc/pages/home/appbar/page_register_new_IOT.dart';
 import 'package:tcc/pages/page_splash.dart';
-import 'package:tcc/repository/repository_iot.dart';
+import 'package:tcc/repositories/repository_iot.dart';
 import 'package:tcc/services/service_autentication.dart';
 import 'package:tcc/utils/notifiers/provider_dark_theme.dart';
 import 'package:tcc/utils/style/style_custom_theme.dart';

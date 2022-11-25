@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tcc/controller/controller_config.dart';
+import 'package:tcc/controllers/controller_config.dart';
 import 'package:tcc/services/service_autentication.dart';
 import 'package:tcc/widgets/home/appbar/custom_dark_mode_switch.dart';
 import 'package:tcc/widgets/forms/custom_textformfield.dart';
