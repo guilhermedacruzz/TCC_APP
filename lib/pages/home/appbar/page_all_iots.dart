@@ -16,19 +16,24 @@ class PageAllIots extends StatelessWidget {
         title: const Text("Todos os dispositivos"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(35),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: _repositoryIot.iots
               .map(
-                (iot) => Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.symmetric(vertical: 5),
-                  height: 70,
-                  child: Card(
-                    child: CustomTile(
+                (iot) => Card(
+                  child: ExpansionTile(
+                    expandedAlignment: Alignment.centerLeft,
+                    expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                    childrenPadding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                    title: CustomTile(
                       iot: iot,
                       isSelected: false,
                     ),
+                    children: [
+                      Text("Nome: ${iot.name}"),
+                      Text("Descrição: ${iot.description}"),
+                      Text("Timer: ${iot.name} minutos"),
+                    ],
                   ),
                 ),
               )
