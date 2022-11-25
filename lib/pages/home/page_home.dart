@@ -36,6 +36,7 @@ class _PageHomeState extends State<PageHome> {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: _repositoryIot.hasData
                 ? [
                     const CustomIotViewer(),

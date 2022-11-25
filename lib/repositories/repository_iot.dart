@@ -9,7 +9,7 @@ import 'package:tcc/utils/enums/enums.dart';
 
 class RepositoryIot with ChangeNotifier {
   static const urlDominion = 'localhost:3000';
-  static const getIotsEndPoint = "/iots";
+  static const getIotsEndPoint = "/iots/findByUserId";
 
   final List<Iot> _list = [];
   late Iot _currentIot;
