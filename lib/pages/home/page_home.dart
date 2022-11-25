@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tcc/pages/page_register_new_IOT.dart';
+import 'package:tcc/pages/home/appbar/page_register_new_IOT.dart';
 import 'package:tcc/repository/repository_iot.dart';
-import 'package:tcc/services/service_autentication.dart';
 import 'package:tcc/widgets/custom_drawler.dart';
 import 'package:tcc/widgets/custom_iot_viewer.dart';
 import 'package:tcc/widgets/trash/grafics.dart';

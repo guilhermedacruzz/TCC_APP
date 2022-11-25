@@ -5,13 +5,13 @@ import 'package:tcc/pages/autentication/login/page_recover_password.dart';
 import 'package:tcc/pages/autentication/login/page_sign_in.dart';
 import 'package:tcc/pages/autentication/login/page_sign_up.dart';
 import 'package:tcc/pages/autentication/welcome/page_welcome.dart';
-import 'package:tcc/pages/page_config.dart';
-import 'package:tcc/pages/page_home.dart';
-import 'package:tcc/pages/page_register_new_IOT.dart';
+import 'package:tcc/pages/home/appbar/page_config.dart';
+import 'package:tcc/pages/home/page_home.dart';
+import 'package:tcc/pages/home/appbar/page_register_new_IOT.dart';
 import 'package:tcc/pages/page_splash.dart';
 import 'package:tcc/repository/repository_iot.dart';
 import 'package:tcc/services/service_autentication.dart';
-import 'package:tcc/test/service_iot.dart';
+import 'package:tcc/test/test_service_iot.dart';
 import 'package:tcc/utils/style.dart';
 
 void main() {
