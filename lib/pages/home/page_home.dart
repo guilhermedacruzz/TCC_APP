@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tcc/pages/home/appbar/page_register_new_IOT.dart';
+import 'package:tcc/widgets/home/appbar/custom_home_app_bar.dart';
 import 'package:tcc/repository/repository_iot.dart';
 import 'package:tcc/widgets/home/appbar/custom_drawler.dart';
-import 'package:tcc/widgets/listTile/custom_iot_viewer.dart';
 import 'package:tcc/widgets/home/grafics/grafics.dart';
+import 'package:tcc/widgets/home/viewer/custom_iot_viewer.dart';
 
 class PageHome extends StatefulWidget {
   static String routeName = "/home";
@@ -30,37 +30,7 @@ class _PageHomeState extends State<PageHome> {
 
     return Scaffold(
       drawer: const CustomDrawer(),
-      appBar: AppBar(
-        title: SizedBox(
-          width: double.infinity,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                "assets/images/sapo.png",
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              Text(
-                "SAPA",
-                style: Theme.of(context).textTheme.headline5,
-              ),
-            ],
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () {
-              Navigator.of(context).pushNamed(PageRegisterNewIOT.routeName);
-            },
-          ),
-        ],
-      ),
+      appBar: const CustomHomeAppBar() as PreferredSizeWidget,
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: SingleChildScrollView(
