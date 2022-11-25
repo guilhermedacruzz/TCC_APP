@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc/pages/home/appbar/page_all_iots.dart';
 import 'package:tcc/pages/home/appbar/page_config.dart';
-import 'package:tcc/pages/home/page_home.dart';
+import 'package:tcc/pages/page_splash.dart';
 import 'package:tcc/services/service_autentication.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -69,7 +69,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               leading: const Icon(Icons.home),
               title: const Text("Home"),
               onTap: () {
-                Navigator.of(context).pushNamed(PageHome.routeName);
+                Navigator.of(context).pushNamed(PageSplash.routeName);
               },
             ),
             ListTile(

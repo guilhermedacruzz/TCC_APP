@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/pages/home/appbar/page_register_new_IOT.dart';
+import 'package:tcc/pages/page_splash.dart';
 
 class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   CustomHomeAppBar({Key? key})
@@ -32,7 +33,9 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed(PageSplash.routeName);
+          },
         ),
         IconButton(
           icon: const Icon(Icons.add),
