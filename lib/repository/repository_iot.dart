@@ -30,7 +30,7 @@ class RepositoryIot with ChangeNotifier {
   }
 
   Uri _getApiEndPoint() {
-    return Uri.https(
+    return Uri.http(
       urlDominion,
       getIotsEndPoint,
       {
@@ -44,6 +44,7 @@ class RepositoryIot with ChangeNotifier {
       final response = await http.get(_getApiEndPoint());
 
       if (response.statusCode == 200) {
+        
         final list = json.decode(response.body) as List;
 
         final iots = <Iot>[];
@@ -60,11 +61,13 @@ class RepositoryIot with ChangeNotifier {
             ),
           );
         }
+
         return Result.value(iots);
+        //return Result.value([Iot(id: "mdm,m3", name: "jdhqk", description: "efjej", timer: 4, user: "jdkjhdkjjh")]);
       } else {
         return Result.error(response.body);
       }
-    } catch (e) {
+    } on Exception catch (e) {
       return Result.error(e.toString());
     }
   }
@@ -83,7 +86,7 @@ class RepositoryIot with ChangeNotifier {
       _actionResult = ActionResult.error;
     }
 
-    msg = res.asError!.error as String;
-    _actionResult = ActionResult.error;
+    _status = Status.done;
+    notifyListeners();
   }
 }

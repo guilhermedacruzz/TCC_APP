@@ -9,8 +9,9 @@ import 'package:tcc/pages/page_config.dart';
 import 'package:tcc/pages/page_home.dart';
 import 'package:tcc/pages/page_register_new_IOT.dart';
 import 'package:tcc/pages/page_splash.dart';
+import 'package:tcc/repository/repository_iot.dart';
 import 'package:tcc/services/service_autentication.dart';
-import 'package:tcc/services/service_iot.dart';
+import 'package:tcc/test/service_iot.dart';
 import 'package:tcc/utils/style.dart';
 
 void main() {
@@ -50,8 +51,11 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
           create: (_) => ServiceAutentication(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => ServiceIot(),
+        ChangeNotifierProxyProvider<ServiceAutentication, RepositoryIot>(
+          create: (context) => RepositoryIot(
+              Provider.of<ServiceAutentication>(context, listen: false)),
+          update: (context, serviceAutentication, last) =>
+              RepositoryIot(serviceAutentication),
         ),
       ],
       child: Consumer<DarkThemeProvider>(
