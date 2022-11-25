@@ -17,6 +17,7 @@ class _CustomIotViewerState extends State<CustomIotViewer> {
   @override
   Widget build(BuildContext context) {
     final _repositoryIot = Provider.of<RepositoryIot>(context);
+
     Size size = MediaQuery.of(context).size;
 
     return Card(
@@ -28,11 +29,11 @@ class _CustomIotViewerState extends State<CustomIotViewer> {
             height: 70,
             child: DropdownButton(
               isExpanded: true,
-              value: _repositoryIot.iots[_repositoryIot.currentIot].id,
+              value: _repositoryIot.currentIot,
               items: _repositoryIot.iots
                   .map(
                     (type) => DropdownMenuItem(
-                      value: type.id,
+                      value: type,
                       child: Container(
                         alignment: Alignment.center,
                         child: CustomTile(
@@ -43,7 +44,11 @@ class _CustomIotViewerState extends State<CustomIotViewer> {
                     ),
                   )
                   .toList(),
-              onChanged: (type) {},
+              onChanged: (type) {
+                setState(() {
+                  _repositoryIot.setCurrentIot(type as Iot);
+                });
+              },
             ),
           ),
         ),

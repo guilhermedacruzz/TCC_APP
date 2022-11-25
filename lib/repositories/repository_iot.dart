@@ -12,7 +12,7 @@ class RepositoryIot with ChangeNotifier {
   static const getIotsEndPoint = "/iots";
 
   final List<Iot> _list = [];
-  int _currentIot = 0;
+  late Iot _currentIot;
 
   final ServiceAutentication _serviceAutentication;
 
@@ -26,9 +26,9 @@ class RepositoryIot with ChangeNotifier {
 
   RepositoryIot(this._serviceAutentication);
 
-  int get currentIot => _currentIot;
+  Iot get currentIot => _currentIot;
 
-  void setCurrentIot(int newIot) {
+  void setCurrentIot(Iot newIot) {
     _currentIot = newIot;
   }
 
@@ -70,7 +70,6 @@ class RepositoryIot with ChangeNotifier {
         }
 
         return Result.value(iots);
-        //return Result.value([Iot(id: "mdm,m3", name: "jdhqk", description: "efjej", timer: 4, user: "jdkjhdkjjh")]);
       } else {
         return Result.error(response.body);
       }
@@ -86,6 +85,7 @@ class RepositoryIot with ChangeNotifier {
     if (res.isValue) {
       _list.clear();
       _list.addAll(res.asValue!.value);
+      _currentIot = _list[0];
       _actionResult = ActionResult.success;
       _statusData = DataStatus.loaded;
     } else {
