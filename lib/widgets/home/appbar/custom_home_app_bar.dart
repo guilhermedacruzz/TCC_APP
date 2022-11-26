@@ -3,12 +3,12 @@ import 'package:tcc/pages/home/appbar/page_register_new_IOT.dart';
 import 'package:tcc/pages/page_splash.dart';
 
 class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  CustomHomeAppBar({Key? key})
-      : preferredSize = Size.fromHeight(kToolbarHeight),
+  const CustomHomeAppBar({Key? key})
+      : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
 
   @override
-  final Size preferredSize; // default is 56.0
+  final Size preferredSize;
 
   @override
   Widget build(BuildContext context) {
