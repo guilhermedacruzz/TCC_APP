@@ -1,22 +1,20 @@
 import 'dart:collection';
 import 'dart:convert';
-import 'package:async/async.dart';
 import 'package:flutter/material.dart';
-import 'package:tcc/models/iot.dart';
+import 'package:async/async.dart';
+import 'package:intl/intl.dart';
+import 'package:tcc/models/logs.dart';
+import 'package:tcc/repositories/repository_iot.dart';
 import 'package:http/http.dart' as http;
-import 'package:tcc/repositories/repository_logs.dart';
-import 'package:tcc/services/service_autentication.dart';
 import 'package:tcc/utils/enums/enums.dart';
 
-class RepositoryIot with ChangeNotifier {
+class RepositoryLogs with ChangeNotifier {
   static const urlDominion = '192.168.100.110:3000';
-  static const getIotsEndPoint = "/iots/findByUserId";
+  static const getLogsEndPoint = "/iots/findByUserId";
 
-  final List<Iot> _list = [];
-  late Iot _currentIot;
+  final List<Logs> _list = [];
 
-  final ServiceAutentication _serviceAutentication;
-  late RepositoryLogs _repositoryLogs;
+  final RepositoryIot _repositoryIot;
 
   var _status = Status.idle;
   var _actionResult = ActionResult.none;
@@ -26,54 +24,44 @@ class RepositoryIot with ChangeNotifier {
   ActionResult get result => _actionResult;
   bool get hasData => _statusData == DataStatus.loaded;
 
-  RepositoryIot(this._serviceAutentication) {
-    _repositoryLogs = RepositoryLogs(this);
-  }
+  RepositoryLogs(this._repositoryIot);
 
-  Iot get currentIot => _currentIot;
-
-  void setCurrentIot(Iot newIot) {
-    _currentIot = newIot;
-    _repositoryLogs.loadLogs();
-    notifyListeners();
-  }
-
-  List<Iot> get iots {
+  List<Logs> get logs {
     return UnmodifiableListView(_list);
   }
 
   Uri _getApiEndPoint() {
     return Uri.http(
       urlDominion,
-      getIotsEndPoint,
+      getLogsEndPoint,
       {
-        'id': _serviceAutentication.user?.id,
+        'id': _repositoryIot.currentIot.id,
       },
     );
   }
 
-  Future<Result<List<Iot>>> _loadRemote() async {
+  Future<Result<List<Logs>>> _loadRemote() async {
     try {
       final response = await http.get(_getApiEndPoint());
 
       if (response.statusCode == 200) {
         final list = json.decode(response.body) as List;
-        final iots = <Iot>[];
+        final logs = <Logs>[];
 
         for (var i = 0; i < list.length; i++) {
           final data = list[i];
-          iots.add(
-            Iot(
+          logs.add(
+            Logs(
               id: data["_id"],
-              name: data["name"],
-              description: data["description"],
-              user: data["user"],
-              timer: data["timer"],
+              iot: data["iot"],
+              minutes: data["minutes"],
+              status: data["status"],
+              date: DateFormat("yyyy-MM-dd hh:mm").parse(data["date"]),
             ),
           );
         }
 
-        return Result.value(iots);
+        return Result.value(logs);
       } else {
         return Result.error(response.body);
       }
@@ -82,14 +70,13 @@ class RepositoryIot with ChangeNotifier {
     }
   }
 
-  loadIots() async {
+  loadLogs() async {
     final res = await _loadRemote();
     String? msg;
 
     if (res.isValue) {
       _list.clear();
       _list.addAll(res.asValue!.value);
-      setCurrentIot(_list[0]);
       _actionResult = ActionResult.success;
       _statusData = DataStatus.loaded;
     } else {

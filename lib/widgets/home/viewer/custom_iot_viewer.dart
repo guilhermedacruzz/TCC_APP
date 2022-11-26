@@ -30,6 +30,7 @@ class _CustomIotViewerState extends State<CustomIotViewer> {
             child: DropdownButton(
               isExpanded: true,
               value: _repositoryIot.currentIot,
+              iconEnabledColor: Theme.of(context).highlightColor,
               items: _repositoryIot.iots
                   .map(
                     (type) => DropdownMenuItem(
