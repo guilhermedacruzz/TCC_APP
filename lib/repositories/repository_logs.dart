@@ -5,7 +5,7 @@ import 'package:async/async.dart';
 import 'package:tcc/models/logs.dart';
 import 'package:tcc/repositories/repository_iot.dart';
 import 'package:http/http.dart' as http;
-import 'package:tcc/utils/enums/enums.dart';
+import 'package:tcc/utils/enums/enum_data_status.dart';
 
 class RepositoryLogs with ChangeNotifier {
   static const urlDominion = '192.168.100.110:3000';
@@ -15,12 +15,8 @@ class RepositoryLogs with ChangeNotifier {
 
   final RepositoryIot _repositoryIot;
 
-  var _status = Status.idle;
-  var _actionResult = ActionResult.none;
   var _statusData = DataStatus.empty;
 
-  Status get status => _status;
-  ActionResult get result => _actionResult;
   bool get hasData => _statusData == DataStatus.loaded;
 
   RepositoryLogs(this._repositoryIot);
@@ -63,19 +59,13 @@ class RepositoryLogs with ChangeNotifier {
 
   loadLogs() async {
     final res = await _loadRemote();
-    String? msg;
 
     if (res.isValue) {
       _list.clear();
       _list.addAll(res.asValue!.value.reversed);
-      _actionResult = ActionResult.success;
       _statusData = DataStatus.loaded;
-    } else {
-      msg = res.asError!.error as String;
-      _actionResult = ActionResult.error;
-    }
+    } 
 
-    _status = Status.done;
     notifyListeners();
   }
 }

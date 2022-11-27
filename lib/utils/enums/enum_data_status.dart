@@ -1,0 +1,4 @@
+enum DataStatus {
+  empty,
+  loaded,
+}
