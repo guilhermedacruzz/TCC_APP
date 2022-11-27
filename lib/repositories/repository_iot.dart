@@ -16,7 +16,7 @@ class RepositoryIot with ChangeNotifier {
   final List<Iot> _list = [];
   late Iot _currentIot;
 
-  final ServiceAutentication _serviceAutentication;
+  ServiceAutentication _serviceAutentication;
   late RepositoryLogs _repositoryLogs;
 
   var _statusData = DataStatus.empty;
@@ -89,5 +89,9 @@ class RepositoryIot with ChangeNotifier {
     }
 
     notifyListeners();
+  }
+
+  void update(ServiceAutentication serviceAutentication, RepositoryIot repositoryIot) {
+    _serviceAutentication = serviceAutentication;
   }
 }

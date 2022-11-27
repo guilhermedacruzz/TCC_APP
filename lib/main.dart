@@ -54,8 +54,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProxyProvider<ServiceAutentication, RepositoryIot>(
           create: (context) => RepositoryIot(
               Provider.of<ServiceAutentication>(context, listen: false)),
-          update: (context, serviceAutentication, last) =>
-              RepositoryIot(serviceAutentication),
+          update: (context, serviceAutentication, last) => last!..update(serviceAutentication, last),
         ),
       ],
       child: Consumer<ProviderDarkTheme>(
