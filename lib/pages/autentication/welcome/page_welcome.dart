@@ -38,7 +38,7 @@ class _PageWelcomeState extends State<PageWelcome> {
                           pageWelcomeData[index]["title"],
                           style:
                               Theme.of(context).textTheme.headline4!.copyWith(
-                                    color: Theme.of(context).primaryColorDark,
+                                    color: Theme.of(context).colorScheme.primary,
                                   ),
                         ),
                         Text(
@@ -111,7 +111,7 @@ class _PageWelcomeState extends State<PageWelcome> {
                       : Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColorDark,
+                            color: Theme.of(context).colorScheme.primary,
                             borderRadius: BorderRadius.circular(100),
                           ),
                           child: Icon(

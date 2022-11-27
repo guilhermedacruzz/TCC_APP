@@ -6,7 +6,7 @@ List pageWelcomeData = [
     "src":"assets/images/welcome/welcome_image_1.png",
   },
   {
-    "title": "Totalmente Personalizável",
+    "title": "Todo Personalizável",
     "subtitle": "por Guilherme da Cruz",
     "text": "Você pode escolher as configurações do seu dispositivo IOT.",
     "src":"assets/images/welcome/welcome_image_2.png",
