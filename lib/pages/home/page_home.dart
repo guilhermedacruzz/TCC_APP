@@ -17,7 +17,6 @@ class PageHome extends StatefulWidget {
 }
 
 class _PageHomeState extends State<PageHome> {
-  bool toggle = false;
 
   @override
   void initState() {
