@@ -56,8 +56,7 @@ class RepositoryLogs with ChangeNotifier {
               iot: data["iot"],
               minutes: data["minutes"],
               status: data["status"],
-              date: DateFormat("yyyy-MM-dd hh:mm").parse(DateTime.now()
-                  .toString()), //DateFormat("yyyy-MM-dd hh:mm").parse(data["date"]),
+              date: DateTime.parse(data["date"]),
             ),
           );
         }

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc/models/iot.dart';
 import 'package:tcc/repositories/repository_iot.dart';
@@ -47,7 +48,7 @@ class CustomTile extends StatelessWidget {
                       ? [
                           Text(_repositoryIot.logs[0].status),
                           const SizedBox(width: 20),
-                          Text(_repositoryIot.logs[0].date.toString()),
+                          Text(DateFormat("yyyy-MM-dd HH:mm:ss").format(_repositoryIot.logs[0].date)),
                         ]
                       : [
                           const Icon(
