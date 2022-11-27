@@ -19,7 +19,8 @@ class GraficsByTimeAndStatus extends StatelessWidget {
         ? SfCartesianChart(
             primaryYAxis: CategoryAxis(
               axisLabelFormatter: (AxisLabelRenderDetails value) {
-                return ChartAxisLabel(GRAFICS_CONVERTER[int.parse(value.text)], value.textStyle);
+                return ChartAxisLabel(
+                    GRAFICS_CONVERTER[int.parse(value.text)], value.textStyle);
               },
               isVisible: true,
               interval: 1,
@@ -42,9 +43,16 @@ class GraficsByTimeAndStatus extends StatelessWidget {
                   yValueMapper: (GraficsObject data, _) => data.y)
             ],
           )
-        : Text(
-            "Sem dados para gerar o gráfico!",
-            style: Theme.of(context).textTheme.headline6,
+        : Column(
+            children: [
+              const SizedBox(height: 30),
+              Text(
+                "Sem dados para gerar o gráfico!",
+                style: Theme.of(context).textTheme.headline6?.copyWith(
+                      color: Theme.of(context).indicatorColor,
+                    ),
+              ),
+            ],
           );
   }
 }

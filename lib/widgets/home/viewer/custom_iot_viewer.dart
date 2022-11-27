@@ -25,7 +25,7 @@ class _CustomIotViewerState extends State<CustomIotViewer> {
         child: ButtonTheme(
           alignedDropdown: true,
           child: SizedBox(
-            width: size.width * 0.8,
+            width: double.infinity,
             height: 70,
             child: DropdownButton(
               isExpanded: true,

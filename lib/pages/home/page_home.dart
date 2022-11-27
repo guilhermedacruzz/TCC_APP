@@ -32,13 +32,13 @@ class _PageHomeState extends State<PageHome> {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: const CustomHomeAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Center(
-          child: SingleChildScrollView(
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: _repositoryIot.hasData
                   ? (_repositoryIot.iots.isEmpty)
                       ? [
