@@ -4,6 +4,7 @@ import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:tcc/models/iot.dart';
 import 'package:http/http.dart' as http;
+import 'package:tcc/models/logs.dart';
 import 'package:tcc/repositories/repository_logs.dart';
 import 'package:tcc/services/service_autentication.dart';
 import 'package:tcc/utils/enums/enums.dart';
@@ -32,15 +33,21 @@ class RepositoryIot with ChangeNotifier {
 
   Iot get currentIot => _currentIot;
 
-  void setCurrentIot(Iot newIot) {
+  void setCurrentIot(Iot newIot) async {
     _currentIot = newIot;
-    _repositoryLogs.loadLogs();
+    await _repositoryLogs.loadLogs();
     notifyListeners();
   }
 
   List<Iot> get iots {
     return UnmodifiableListView(_list);
   }
+
+  List<Logs> get logs {
+    return _repositoryLogs.logs;
+  }
+
+  bool get hasLogs => _repositoryLogs.hasData;
 
   Uri _getApiEndPoint() {
     return Uri.http(
@@ -89,7 +96,7 @@ class RepositoryIot with ChangeNotifier {
     if (res.isValue) {
       _list.clear();
       _list.addAll(res.asValue!.value);
-      setCurrentIot(_list[0]);
+      setCurrentIot(_list[1]);
       _actionResult = ActionResult.success;
       _statusData = DataStatus.loaded;
     } else {

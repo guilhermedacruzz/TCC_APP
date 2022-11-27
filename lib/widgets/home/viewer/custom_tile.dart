@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tcc/models/iot.dart';
+import 'package:tcc/repositories/repository_iot.dart';
 
 class CustomTile extends StatelessWidget {
   final bool isSelected;
@@ -13,6 +17,8 @@ class CustomTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _repositoryIot = Provider.of<RepositoryIot>(context);
+
     return ListTile(
       leading: Container(
         padding: const EdgeInsets.all(8),
@@ -35,11 +41,27 @@ class CustomTile extends StatelessWidget {
         style: Theme.of(context).textTheme.bodyText2 as TextStyle,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text("Fechado"),
-            SizedBox(width: 20),
-            Text("12:00:00"),
-          ],
+          children: (isSelected)
+              ? (_repositoryIot.hasLogs)
+                  ? (_repositoryIot.logs.isNotEmpty)
+                      ? [
+                          Text(_repositoryIot.logs[0].status),
+                          const SizedBox(width: 20),
+                          Text(_repositoryIot.logs[0].date.toString()),
+                        ]
+                      : [
+                          const Icon(
+                            Icons.block,
+                          ),
+                        ]
+                  : [
+                      const CircularProgressIndicator(),
+                    ]
+              : [
+                  const Icon(
+                    Icons.info,
+                  ),
+                ],
         ),
       ),
     );

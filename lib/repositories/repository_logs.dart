@@ -10,7 +10,7 @@ import 'package:tcc/utils/enums/enums.dart';
 
 class RepositoryLogs with ChangeNotifier {
   static const urlDominion = '192.168.100.110:3000';
-  static const getLogsEndPoint = "/iots/findByUserId";
+  static const getLogsEndPoint = "/logs/findByIotId";
 
   final List<Logs> _list = [];
 
@@ -56,7 +56,7 @@ class RepositoryLogs with ChangeNotifier {
               iot: data["iot"],
               minutes: data["minutes"],
               status: data["status"],
-              date: DateFormat("yyyy-MM-dd hh:mm").parse(data["date"]),
+              date: DateFormat("yyyy-MM-dd hh:mm").parse(DateTime.now().toString()),//DateFormat("yyyy-MM-dd hh:mm").parse(data["date"]),
             ),
           );
         }
@@ -76,7 +76,7 @@ class RepositoryLogs with ChangeNotifier {
 
     if (res.isValue) {
       _list.clear();
-      _list.addAll(res.asValue!.value);
+      _list.addAll(res.asValue!.value.reversed);
       _actionResult = ActionResult.success;
       _statusData = DataStatus.loaded;
     } else {
