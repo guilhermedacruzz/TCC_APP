@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc/repositories/repository_iot.dart';
-import 'package:tcc/widgets/home/viewer/custom_tile.dart';
+import 'package:tcc/widgets/home/viewer/custom_iot_tile.dart';
 
 class PageAllIots extends StatelessWidget {
   static String routeName = "/allIots";
@@ -25,7 +25,7 @@ class PageAllIots extends StatelessWidget {
                     expandedAlignment: Alignment.centerLeft,
                     expandedCrossAxisAlignment: CrossAxisAlignment.start,
                     childrenPadding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
-                    title: CustomTile(
+                    title: CustomIotTile(
                       iot: iot,
                       isSelected: false,
                     ),

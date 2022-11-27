@@ -1,16 +1,14 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc/models/iot.dart';
 import 'package:tcc/repositories/repository_iot.dart';
 
-class CustomTile extends StatelessWidget {
+class CustomIotTile extends StatelessWidget {
   final bool isSelected;
   final Iot iot;
 
-  const CustomTile({
+  const CustomIotTile({
     super.key,
     required this.isSelected,
     required this.iot,

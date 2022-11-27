@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc/models/iot.dart';
 import 'package:tcc/repositories/repository_iot.dart';
-import 'package:tcc/widgets/home/viewer/custom_tile.dart';
+import 'package:tcc/widgets/home/viewer/custom_iot_tile.dart';
 
 class CustomIotViewer extends StatefulWidget {
   const CustomIotViewer({
@@ -37,7 +37,7 @@ class _CustomIotViewerState extends State<CustomIotViewer> {
                       value: type,
                       child: Container(
                         alignment: Alignment.center,
-                        child: CustomTile(
+                        child: CustomIotTile(
                           iot: type,
                           isSelected: type == _repositoryIot.currentIot,
                         ),
