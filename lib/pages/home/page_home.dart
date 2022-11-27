@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tcc/widgets/home/appbar/custom_home_app_bar.dart';
 import 'package:tcc/repositories/repository_iot.dart';
 import 'package:tcc/widgets/home/appbar/custom_drawler.dart';
+import 'package:tcc/widgets/home/grafics/custom_giant_button.dart';
 import 'package:tcc/widgets/home/grafics/grafics.dart';
 import 'package:tcc/widgets/home/viewer/custom_iot_viewer.dart';
 
@@ -30,7 +31,7 @@ class _PageHomeState extends State<PageHome> {
 
     return Scaffold(
       drawer: const CustomDrawer(),
-      appBar: CustomHomeAppBar(),
+      appBar: const CustomHomeAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Center(
@@ -39,37 +40,29 @@ class _PageHomeState extends State<PageHome> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: _repositoryIot.hasData
-                  ? [
-                      const CustomIotViewer(),
-                      const SizedBox(height: 15),
-                      Container(
-                        padding: const EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: IconButton(
-                          color: Theme.of(context).backgroundColor,
-                          iconSize:
-                              Theme.of(context).textTheme.headline1?.fontSize,
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.power_settings_new,
+                  ? (_repositoryIot.logs.isEmpty)
+                      ? [
+                          Text(
+                            "Nenhum dispositivo vinculado!",
+                            style: Theme.of(context).textTheme.headline6,
                           ),
-                        ),
-                      ),
-                      Text(
-                        _repositoryIot.currentIot.name,
-                        style: Theme.of(context).textTheme.headline4,
-                      ),
-                      const SizedBox(height: 15),
-                      const GraficsTeste(),
-                    ]
+                        ]
+                      : [
+                          const CustomIotViewer(),
+                          const SizedBox(height: 15),
+                          const CustomGiantButton(),
+                          Text(
+                            _repositoryIot.currentIot.name,
+                            style: Theme.of(context).textTheme.headline4,
+                          ),
+                          const SizedBox(height: 15),
+                          const GraficsTeste(),
+                        ]
                   : [
                       const CircularProgressIndicator(),
                       const SizedBox(height: 15),
                       Text(
-                        "Não encontramos seus dispositivos",
+                        "Carregando os seus dispositivos!",
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ],

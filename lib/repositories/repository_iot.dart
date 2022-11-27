@@ -82,7 +82,9 @@ class RepositoryIot with ChangeNotifier {
     if (res.isValue) {
       _list.clear();
       _list.addAll(res.asValue!.value);
-      setCurrentIot(_list[0]);
+      if(_list.isNotEmpty) {
+        setCurrentIot(_list[0]);
+      }
       _statusData = DataStatus.loaded;
     }
 
