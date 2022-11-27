@@ -12,4 +12,12 @@ class Iot {
     required this.user,
     required this.timer,
   });
+
+  factory Iot.fromJson(Map<String, dynamic> data) => Iot(
+        id: data["_id"],
+        name: data["name"],
+        description: data["description"],
+        user: data["user"],
+        timer: data["timer"],
+      );
 }

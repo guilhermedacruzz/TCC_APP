@@ -69,15 +69,7 @@ class RepositoryIot with ChangeNotifier {
 
         for (var i = 0; i < list.length; i++) {
           final data = list[i];
-          iots.add(
-            Iot(
-              id: data["_id"],
-              name: data["name"],
-              description: data["description"],
-              user: data["user"],
-              timer: data["timer"],
-            ),
-          );
+          iots.add(Iot.fromJson(data));
         }
 
         return Result.value(iots);

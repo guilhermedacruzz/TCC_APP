@@ -2,7 +2,6 @@ import 'dart:collection';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:async/async.dart';
-import 'package:intl/intl.dart';
 import 'package:tcc/models/logs.dart';
 import 'package:tcc/repositories/repository_iot.dart';
 import 'package:http/http.dart' as http;
@@ -50,15 +49,7 @@ class RepositoryLogs with ChangeNotifier {
 
         for (var i = 0; i < list.length; i++) {
           final data = list[i];
-          logs.add(
-            Logs(
-              id: data["_id"],
-              iot: data["iot"],
-              minutes: data["minutes"],
-              status: data["status"],
-              date: DateTime.parse(data["date"]),
-            ),
-          );
+          logs.add(Logs.fromJson(data));
         }
 
         return Result.value(logs);
