@@ -100,7 +100,7 @@ flutter:
     - assets/images/anime.gif
     - assets/images/sapo.png
     - assets/images/welcome/
-    - icons/
+    - assets/icons/
   fonts:
     - family: Blinker
       fonts:
