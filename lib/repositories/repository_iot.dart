@@ -7,11 +7,11 @@ import 'package:http/http.dart' as http;
 import 'package:tcc/models/logs.dart';
 import 'package:tcc/repositories/repository_logs.dart';
 import 'package:tcc/services/service_autentication.dart';
+import 'package:tcc/utils/defs/url_dominion.dart';
 import 'package:tcc/utils/enums/enum_data_status.dart';
 
 class RepositoryIot with ChangeNotifier {
-  static const urlDominion = '192.168.100.110:3000';
-  static const getIotsEndPoint = "/iots/findByUserId";
+  static const endPoint = "/iots/findByUserId";
 
   final List<Iot> _list = [];
   late Iot _currentIot;
@@ -20,12 +20,8 @@ class RepositoryIot with ChangeNotifier {
   late RepositoryLogs _repositoryLogs;
 
   var _statusData = DataStatus.empty;
-
   bool get hasData => _statusData == DataStatus.loaded;
-
-  RepositoryIot(this._serviceAutentication) {
-    _repositoryLogs = RepositoryLogs(this);
-  }
+  bool get hasLogs => _repositoryLogs.hasData;
 
   Iot get currentIot => _currentIot;
 
@@ -40,15 +36,17 @@ class RepositoryIot with ChangeNotifier {
   }
 
   List<Logs> get logs {
-    return _repositoryLogs.logs;
+    return UnmodifiableListView(_repositoryLogs.logs);
   }
 
-  bool get hasLogs => _repositoryLogs.hasData;
+  RepositoryIot(this._serviceAutentication) {
+    _repositoryLogs = RepositoryLogs(this);
+  }
 
   Uri _getApiEndPoint() {
     return Uri.http(
-      urlDominion,
-      getIotsEndPoint,
+      URL_DOMINION,
+      endPoint,
       {
         'id': _serviceAutentication.user?.id,
       },

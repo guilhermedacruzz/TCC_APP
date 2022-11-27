@@ -5,30 +5,28 @@ import 'package:async/async.dart';
 import 'package:tcc/models/logs.dart';
 import 'package:tcc/repositories/repository_iot.dart';
 import 'package:http/http.dart' as http;
+import 'package:tcc/utils/defs/url_dominion.dart';
 import 'package:tcc/utils/enums/enum_data_status.dart';
 
 class RepositoryLogs with ChangeNotifier {
-  static const urlDominion = '192.168.100.110:3000';
-  static const getLogsEndPoint = "/logs/findByIotId";
+  static const endPoint = "/logs/findByIotId";
 
   final List<Logs> _list = [];
-
   final RepositoryIot _repositoryIot;
 
   var _statusData = DataStatus.empty;
-
   bool get hasData => _statusData == DataStatus.loaded;
-
-  RepositoryLogs(this._repositoryIot);
 
   List<Logs> get logs {
     return UnmodifiableListView(_list);
   }
 
+  RepositoryLogs(this._repositoryIot);
+
   Uri _getApiEndPoint() {
     return Uri.http(
-      urlDominion,
-      getLogsEndPoint,
+      URL_DOMINION,
+      endPoint,
       {
         'id': _repositoryIot.currentIot.id,
       },
