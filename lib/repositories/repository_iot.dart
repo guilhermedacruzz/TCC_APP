@@ -2,12 +2,12 @@ import 'dart:collection';
 import 'dart:convert';
 import 'package:async/async.dart';
 import 'package:flutter/material.dart';
-import 'package:tcc/models/iot.dart';
+import 'package:tcc/models/model_iot.dart';
 import 'package:http/http.dart' as http;
-import 'package:tcc/models/logs.dart';
+import 'package:tcc/models/model_logs.dart';
 import 'package:tcc/repositories/repository_logs.dart';
 import 'package:tcc/services/service_autentication.dart';
-import 'package:tcc/utils/defs/url_dominion.dart';
+import 'package:tcc/utils/defs/def_url_dominion.dart';
 import 'package:tcc/utils/enums/enum_data_status.dart';
 
 class RepositoryIot with ChangeNotifier {

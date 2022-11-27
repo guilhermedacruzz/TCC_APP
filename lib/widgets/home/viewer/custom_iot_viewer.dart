@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tcc/models/iot.dart';
+import 'package:tcc/models/model_iot.dart';
 import 'package:tcc/repositories/repository_iot.dart';
 import 'package:tcc/widgets/home/viewer/custom_iot_tile.dart';
 

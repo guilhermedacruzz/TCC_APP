@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:tcc/models/user.dart';
-import 'package:tcc/utils/defs/url_dominion.dart';
+import 'package:tcc/models/model_user.dart';
+import 'package:tcc/utils/defs/def_url_dominion.dart';
 
 class ServiceAutentication with ChangeNotifier {
   static const signUpEndPoint = "/users/signup";
