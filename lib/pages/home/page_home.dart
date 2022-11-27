@@ -38,9 +38,9 @@ class _PageHomeState extends State<PageHome> {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: _repositoryIot.hasData
-                  ? (_repositoryIot.logs.isEmpty)
+                  ? (_repositoryIot.iots.isEmpty)
                       ? [
                           Text(
                             "Nenhum dispositivo vinculado!",
