@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:tcc/widgets/home/appbar/custom_home_app_bar.dart';
 import 'package:tcc/repositories/repository_iot.dart';
 import 'package:tcc/widgets/home/appbar/custom_drawler.dart';
-import 'package:tcc/widgets/home/grafics/custom_giant_button.dart';
-import 'package:tcc/widgets/home/grafics/grafics.dart';
+import 'package:tcc/widgets/home/viewer/custom_giant_button.dart';
+import 'package:tcc/widgets/home/grafics/grafics_by_time_and_status.dart';
 import 'package:tcc/widgets/home/viewer/custom_iot_viewer.dart';
 
 class PageHome extends StatefulWidget {
@@ -56,7 +56,7 @@ class _PageHomeState extends State<PageHome> {
                             style: Theme.of(context).textTheme.headline4,
                           ),
                           const SizedBox(height: 15),
-                          const GraficsTeste(),
+                          const GraficsByTimeAndStatus(),
                         ]
                   : [
                       const CircularProgressIndicator(),
