@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:tcc/models/user.dart';
+import 'package:tcc/utils/defs/url_dominion.dart';
 
 class ServiceAutentication with ChangeNotifier {
-  static const urlDominion = '192.168.100.110:3000';
   static const signUpEndPoint = "/users/signup";
   static const signInEndPoint = "/users/signin";
   static const updateEndPoint = "/users/update";
@@ -14,11 +14,15 @@ class ServiceAutentication with ChangeNotifier {
   bool _logged = false;
   bool get logged => _logged;
 
-  Future<String?> singUp(String email, String password, String name) async {
-    final url = Uri.http(
-      urlDominion,
+  Uri _getSignUpEndPoint() {
+    return Uri.http(
+      URL_DOMINION,
       signUpEndPoint,
     );
+  }
+
+  Future<String?> signUp(String email, String password, String name) async {
+    final url = _getSignUpEndPoint();
 
     final body = {
       'name': name,
@@ -45,23 +49,22 @@ class ServiceAutentication with ChangeNotifier {
       return 'Erro!';
     }
 
-    final user = User(
-      id: data["_id"],
-      name: data["name"],
-      email: data["email"],
-      token: data["jwtToken"],
-    );
+    final user = User.fromJson(data);
 
     _user = user;
     _logged = true;
     notifyListeners();
   }
 
-  Future<String?> singIn(String email, String password) async {
-    final url = Uri.http(
-      urlDominion,
+  Uri _getSingInEndPoint() {
+    return Uri.http(
+      URL_DOMINION,
       signInEndPoint,
     );
+  }
+
+  Future<String?> singIn(String email, String password) async {
+    final url = _getSingInEndPoint();
 
     final body = {
       'email': email,
@@ -84,16 +87,18 @@ class ServiceAutentication with ChangeNotifier {
       return "E-mail ou senha inválidos";
     }
 
-    final user = User(
-      id: data["_id"],
-      name: data["name"],
-      email: data["email"],
-      token: data["jwtToken"],
-    );
+    final user = User.fromJson(data);
 
     _user = user;
     _logged = true;
     notifyListeners();
+  }
+
+  Uri _getUpdateEndPoint() {
+    return Uri.http(
+      URL_DOMINION,
+      updateEndPoint,
+    );
   }
 
   Future<String?> update({
@@ -101,11 +106,7 @@ class ServiceAutentication with ChangeNotifier {
     password,
     name,
   }) async {
-
-    final url = Uri.http(
-      urlDominion,
-      updateEndPoint,
-    );
+    final url = _getUpdateEndPoint();
 
     final body = {
       'email': email,
@@ -131,7 +132,7 @@ class ServiceAutentication with ChangeNotifier {
 
     final data = json.decode(response.body);
 
-    if(_user != null) {
+    if (_user != null) {
       _user!.email = data['email'];
       _user!.name = data['name'];
     }

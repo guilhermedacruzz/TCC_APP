@@ -88,7 +88,7 @@ class ControllerSignUp with ChangeNotifier {
     notifyListeners();
 
     String? ret =
-        await _serviceAutentication.singUp(_email, _password, _username);
+        await _serviceAutentication.signUp(_email, _password, _username);
 
     if (ret != null) {
       _msg = ret;

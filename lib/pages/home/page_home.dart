@@ -69,7 +69,7 @@ class _PageHomeState extends State<PageHome> {
                       const CircularProgressIndicator(),
                       const SizedBox(height: 15),
                       Text(
-                        "Não encontramos seus dispositivos ",
+                        "Não encontramos seus dispositivos",
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ],
