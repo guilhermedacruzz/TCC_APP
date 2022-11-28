@@ -17,7 +17,6 @@ class PageHome extends StatefulWidget {
 }
 
 class _PageHomeState extends State<PageHome> {
-
   @override
   void initState() {
     super.initState();
@@ -31,43 +30,55 @@ class _PageHomeState extends State<PageHome> {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: const CustomHomeAppBar(),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: _repositoryIot.hasData
-                  ? (_repositoryIot.iots.isEmpty)
-                      ? [
-                          Text(
-                            "Nenhum dispositivo vinculado!",
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-                        ]
-                      : [
-                          const CustomIotViewer(),
-                          const SizedBox(height: 15),
-                          const CustomGiantButton(),
-                          Text(
-                            _repositoryIot.currentIot.name,
-                            style: Theme.of(context).textTheme.headline4,
-                          ),
-                          const SizedBox(height: 15),
-                          const GraficsByTimeAndStatus(),
-                        ]
-                  : [
-                      const CircularProgressIndicator(),
-                      const SizedBox(height: 15),
-                      Text(
-                        "Carregando os seus dispositivos!",
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
-                    ],
+      body: LayoutBuilder(
+        builder: (
+          BuildContext context,
+          BoxConstraints viewportConstraints,
+        ) {
+          return Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: viewportConstraints.maxHeight,
+              ),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: _repositoryIot.hasData
+                        ? (_repositoryIot.iots.isEmpty)
+                            ? [
+                                Text(
+                                  "Nenhum dispositivo vinculado!",
+                                  style: Theme.of(context).textTheme.headline6,
+                                ),
+                              ]
+                            : [
+                                const CustomIotViewer(),
+                                const SizedBox(height: 15),
+                                const CustomGiantButton(),
+                                Text(
+                                  _repositoryIot.currentIot.name,
+                                  style: Theme.of(context).textTheme.headline4,
+                                ),
+                                const SizedBox(height: 15),
+                                const GraficsByTimeAndStatus(),
+                              ]
+                        : [
+                            const CircularProgressIndicator(),
+                            const SizedBox(height: 15),
+                            Text(
+                              "Carregando os seus dispositivos!",
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                          ],
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
