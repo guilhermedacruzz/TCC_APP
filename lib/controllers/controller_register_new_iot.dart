@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tcc/models/model_iot.dart';
 import 'package:tcc/services/service_register_new_iot.dart';
 import 'package:tcc/utils/enums/enum_action_result.dart';
 import 'package:tcc/utils/enums/enum_status.dart';
@@ -14,7 +15,7 @@ class ControllerRegisterNewIot with ChangeNotifier {
 
   ControllerRegisterNewIot(this._serviceRegisterNewIot);
 
-  Status _processing = Status.idle;
+  Status _status = Status.idle;
   ActionResult _result = ActionResult.none;
   String? _msg;
 
@@ -96,5 +97,27 @@ class ControllerRegisterNewIot with ChangeNotifier {
       return "Senha inválida";
     }
     return null;
+  }
+
+  Future<String?> add(String user_id) async {
+    _status = Status.working;
+    notifyListeners();
+
+    Iot iot = Iot(
+      id: '',
+      name: name,
+      description: description,
+      user: user_id,
+      timer: timer,
+      ssid: ssid,
+      password: password,
+    );
+
+    final resp = await _serviceRegisterNewIot.add(iot);
+
+    _status = Status.done;
+    notifyListeners();
+
+    return resp;
   }
 }
