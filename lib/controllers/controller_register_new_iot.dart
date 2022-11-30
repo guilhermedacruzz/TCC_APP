@@ -20,7 +20,9 @@ class ControllerRegisterNewIot with ChangeNotifier {
   String? _msg;
 
   bool get hasMsg => _result != ActionResult.none;
+  bool get processing => _status == Status.working;
   String get msg => _msg ?? '';
+
 
   String get name => _name;
   String get description => _description;

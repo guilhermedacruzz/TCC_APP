@@ -8,8 +8,8 @@ import 'package:tcc/utils/enums/enum_data_status.dart';
 import 'package:tcc/utils/enums/enum_status.dart';
 
 class ServiceRegisterNewIot with ChangeNotifier {
-  static const iotHost = "192.168.4.1";
-  static const endPoint = "/hello";
+  static const iotHost = "localhost:3000";
+  static const endPoint = "/iots/create";
 
   var _status = Status.idle;
   var _actionResult = ActionResult.none;
@@ -23,14 +23,16 @@ class ServiceRegisterNewIot with ChangeNotifier {
     try {
       final resp = await http.post(
         _getIotEndPoint(),
-        body: json.encode(iot.toJson()),
+        body: iot.toJson(),
       );
+
+      print(resp.body);
 
       if (resp.statusCode == 200) {
         var data = json.decode(resp.body);
         return Result.value(data);
       } else {
-        return Result.error(resp.statusCode);
+        return Result.error(resp.body);
       }
     } on Exception catch (e) {
       return Result.error(e.toString());

@@ -24,7 +24,7 @@ class Iot {
       'user': user,
       'ssid': ssid,
       'password': password,
-      'timer': timer,
+      'timer': timer.toString(),
     };
   }
 
