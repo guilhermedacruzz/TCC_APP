@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc/controllers/controller_register_new_iot.dart';
+import 'package:tcc/services/service_autentication.dart';
 import 'package:tcc/services/service_register_new_iot.dart';
 import 'package:tcc/widgets/forms/custom_button.dart';
 import 'package:tcc/widgets/forms/custom_textformfield.dart';
@@ -16,11 +17,14 @@ class PageRegisterNewIOT extends StatefulWidget {
 
 class _PageRegisterNewIOTState extends State<PageRegisterNewIOT> {
   late ControllerRegisterNewIot _controllerRegisterNewIot;
+  late ServiceAutentication _autenticationService;
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
+
+    _autenticationService = Provider.of<ServiceAutentication>(context);
 
     _controllerRegisterNewIot = ControllerRegisterNewIot(
         Provider.of<ServiceRegisterNewIot>(context, listen: false));
@@ -28,6 +32,21 @@ class _PageRegisterNewIOTState extends State<PageRegisterNewIOT> {
     _controllerRegisterNewIot.addListener(() {
       setState(() {});
     });
+  }
+
+  execute() async {
+    if (_formKey.currentState!.validate()) {
+      await _controllerRegisterNewIot.add(_autenticationService.user!.id);
+
+      if (_controllerRegisterNewIot.hasMsg) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(_controllerRegisterNewIot.msg),
+            backgroundColor: Theme.of(context).highlightColor,
+          ),
+        );
+      }
+    }
   }
 
   @override
@@ -70,7 +89,8 @@ class _PageRegisterNewIOTState extends State<PageRegisterNewIOT> {
                       hint: "Digite o tempo do temporizador",
                       validator: _controllerRegisterNewIot.validateTimer,
                       onChanged: (value) {
-                        _controllerRegisterNewIot.setTimer(int.tryParse(value ?? "") ?? 0);
+                        _controllerRegisterNewIot
+                            .setTimer(int.tryParse(value ?? "") ?? 0);
                       },
                     ),
                   ),
@@ -117,7 +137,7 @@ class _PageRegisterNewIOTState extends State<PageRegisterNewIOT> {
                   widget: const Text(
                     "Conectar e Criar",
                   ),
-                  onAction: () {},
+                  onAction: () => execute(),
                 ),
               ),
             ],
