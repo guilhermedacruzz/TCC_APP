@@ -7,10 +7,11 @@ import 'package:tcc/pages/autentication/welcome/page_welcome.dart';
 import 'package:tcc/pages/home/appbar/page_all_iots.dart';
 import 'package:tcc/pages/home/appbar/page_config.dart';
 import 'package:tcc/pages/home/page_home.dart';
-import 'package:tcc/pages/home/appbar/page_register_new_IOT.dart';
+import 'package:tcc/pages/home/appbar/page_register_new_iot.dart';
 import 'package:tcc/pages/page_splash.dart';
 import 'package:tcc/repositories/repository_iot.dart';
 import 'package:tcc/services/service_autentication.dart';
+import 'package:tcc/services/service_register_new_iot.dart';
 import 'package:tcc/utils/notifiers/provider_dark_theme.dart';
 import 'package:tcc/utils/style/style_custom_theme.dart';
 
@@ -50,6 +51,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (_) => ServiceAutentication(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ServiceRegisterNewIot(),
         ),
         ChangeNotifierProxyProvider<ServiceAutentication, RepositoryIot>(
           create: (context) => RepositoryIot(

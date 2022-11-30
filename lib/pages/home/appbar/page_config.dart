@@ -15,7 +15,7 @@ class PageConfig extends StatefulWidget {
 }
 
 class _PageConfigState extends State<PageConfig> {
-  late ControllerConfig _controller;
+  late ControllerConfig _controllerConfig;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -23,22 +23,22 @@ class _PageConfigState extends State<PageConfig> {
   void initState() {
     super.initState();
 
-    _controller = ControllerConfig(
+    _controllerConfig = ControllerConfig(
         Provider.of<ServiceAutentication>(context, listen: false));
 
-    _controller.addListener(() {
+    _controllerConfig.addListener(() {
       setState(() {});
     });
   }
 
   execute() async {
     if (_formKey.currentState!.validate()) {
-      await _controller.update();
+      await _controllerConfig.update();
 
-      if (_controller.hasMsg) {
+      if (_controllerConfig.hasMsg) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(_controller.msg),
+            content: Text(_controllerConfig.msg),
             backgroundColor: Theme.of(context).highlightColor,
           ),
         );
@@ -83,9 +83,9 @@ class _PageConfigState extends State<PageConfig> {
                           child: CustomTextFormField(
                             label: "Novo nome",
                             hint: "Digite o seu novo nome",
-                            validator: _controller.validateUsername,
+                            validator: _controllerConfig.validateUsername,
                             onChanged: (value) {
-                              _controller.setUsername(value ?? '');
+                              _controllerConfig.setUsername(value ?? '');
                             },
                           ),
                         ),

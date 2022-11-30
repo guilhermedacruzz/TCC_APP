@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tcc/pages/home/appbar/page_register_new_IOT.dart';
+import 'package:tcc/pages/home/appbar/page_register_new_iot.dart';
 import 'package:tcc/pages/page_splash.dart';
 
 class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {

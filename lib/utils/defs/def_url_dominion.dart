@@ -1,1 +1,1 @@
-const URL_DOMINION = '192.168.100.110:3000';
+const URL_DOMINION = 'localhost:3000';
