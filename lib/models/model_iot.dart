@@ -17,14 +17,14 @@ class Iot {
     required this.timer,
   });
 
-  dynamic toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'name': name,
       'description': description,
       'user': user,
       'ssid': ssid,
       'password': password,
-      'timer': timer.toString(),
+      'timer': timer,
     };
   }
 

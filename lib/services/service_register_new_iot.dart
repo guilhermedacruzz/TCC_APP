@@ -11,28 +11,26 @@ class ServiceRegisterNewIot with ChangeNotifier {
   static const iotHost = "localhost:3000";
   static const endPoint = "/iots/create";
 
-  var _status = Status.idle;
-  var _actionResult = ActionResult.none;
-  var _statusData = DataStatus.empty;
-
   Uri _getIotEndPoint() {
     return Uri.http(iotHost, endPoint);
   }
 
   Future<Result<Iot>> _saveRemote(Iot iot) async {
     try {
+      final body = json.encode(iot.toJson());
+      final headers = {'Content-Type': 'application/json'};
+
       final resp = await http.post(
         _getIotEndPoint(),
-        body: iot.toJson(),
+        headers: headers,
+        body: body,
       );
 
-      print(resp.body);
-
-      if (resp.statusCode == 200) {
+      if (resp.statusCode == 200 || resp.statusCode == 201) {
         var data = json.decode(resp.body);
-        return Result.value(data);
+        return Result.value(Iot.fromJson(data));
       } else {
-        return Result.error(resp.body);
+        return Result.error(json.decode(resp.body)["error"]);
       }
     } on Exception catch (e) {
       return Result.error(e.toString());
@@ -40,20 +38,15 @@ class ServiceRegisterNewIot with ChangeNotifier {
   }
 
   Future<String?> add(Iot iot) async {
-    _status = Status.working;
     notifyListeners();
 
     final result = await _saveRemote(iot);
 
     String? msg;
-    if (result.isValue) {
-      _actionResult = ActionResult.success;
-    } else {
-      _actionResult = ActionResult.error;
+    if (!result.isValue) {
       msg = result.asError!.error as String;
     }
 
-    _status = Status.done;
     notifyListeners();
     return msg;
   }

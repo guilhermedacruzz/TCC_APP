@@ -23,7 +23,6 @@ class ControllerRegisterNewIot with ChangeNotifier {
   bool get processing => _status == Status.working;
   String get msg => _msg ?? '';
 
-
   String get name => _name;
   String get description => _description;
   int get timer => _timer;
@@ -104,8 +103,10 @@ class ControllerRegisterNewIot with ChangeNotifier {
     return null;
   }
 
-  Future<String?> add(String user_id) async {
+  add(String user_id) async {
     _status = Status.working;
+    _msg = '';
+    _result = ActionResult.none;
     notifyListeners();
 
     Iot iot = Iot(
@@ -120,9 +121,15 @@ class ControllerRegisterNewIot with ChangeNotifier {
 
     final resp = await _serviceRegisterNewIot.add(iot);
 
+    if (resp != null) {
+      _msg = resp;
+      _result = ActionResult.error;
+    } else {
+      _msg = "Cadastrado com sucesso";
+      _result = ActionResult.success;
+    }
+
     _status = Status.done;
     notifyListeners();
-
-    return resp;
   }
 }
