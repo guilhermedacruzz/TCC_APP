@@ -15,6 +15,7 @@ class PageWelcome extends StatefulWidget {
 class _PageWelcomeState extends State<PageWelcome> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: PageView.builder(
@@ -86,8 +87,7 @@ class _PageWelcomeState extends State<PageWelcome> {
                     Image.asset(
                       pageWelcomeData[index]["src"],
                       fit: BoxFit.cover,
-                      width: 300,
-                      height: 300,
+                      width: size.width * 0.6,
                     ),
                   ],
                 ),

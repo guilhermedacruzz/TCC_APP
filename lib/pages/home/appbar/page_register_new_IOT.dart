@@ -38,7 +38,6 @@ class _PageRegisterNewIOTState extends State<PageRegisterNewIOT> {
   execute() async {
     if (_formKey.currentState!.validate()) {
       await _controllerRegisterNewIot.add(_autenticationService.user!.id);
-      //await _controllerRegisterNewIot.add("638370074439d1486fe4ac37");
 
       if (_controllerRegisterNewIot.hasMsg) {
         ScaffoldMessenger.of(context).showSnackBar(

@@ -3,19 +3,16 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:tcc/models/model_iot.dart';
 import 'package:async/async.dart';
-import 'package:tcc/utils/enums/enum_action_result.dart';
-import 'package:tcc/utils/enums/enum_data_status.dart';
-import 'package:tcc/utils/enums/enum_status.dart';
 
 class ServiceRegisterNewIot with ChangeNotifier {
-  static const iotHost = "localhost:3000";
-  static const endPoint = "/iots/create";
+  static const iotHost = "192.168.4.1";
+  static const endPoint = "/hello";
 
   Uri _getIotEndPoint() {
     return Uri.http(iotHost, endPoint);
   }
 
-  Future<Result<Iot>> _saveRemote(Iot iot) async {
+  Future<Result<String>> _saveRemote(Iot iot) async {
     try {
       final body = json.encode(iot.toJson());
       final headers = {'Content-Type': 'application/json'};
@@ -27,8 +24,7 @@ class ServiceRegisterNewIot with ChangeNotifier {
       );
 
       if (resp.statusCode == 200 || resp.statusCode == 201) {
-        var data = json.decode(resp.body);
-        return Result.value(Iot.fromJson(data));
+        return Result.value(resp.body);
       } else {
         return Result.error(json.decode(resp.body)["error"]);
       }
