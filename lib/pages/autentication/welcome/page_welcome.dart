@@ -38,7 +38,7 @@ class _PageWelcomeState extends State<PageWelcome> {
                         Text(
                           pageWelcomeData[index]["title"],
                           style:
-                              Theme.of(context).textTheme.headline4!.copyWith(
+                              Theme.of(context).textTheme.headline5!.copyWith(
                                     color: Theme.of(context).colorScheme.primary,
                                   ),
                         ),

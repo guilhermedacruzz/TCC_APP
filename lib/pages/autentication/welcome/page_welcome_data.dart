@@ -1,6 +1,6 @@
 List pageWelcomeData = [
   {
-    "title": "Aumente a sua proteção",
+    "title": "Mais proteção",
     "subtitle": "por Guilherme da Cruz",
     "text": "Com o nosso sistema, sua residência se tornará muito mais segura.",
     "src":"assets/images/welcome/welcome_image_1.jpg",
